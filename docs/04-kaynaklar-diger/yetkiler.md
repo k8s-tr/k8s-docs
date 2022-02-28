@@ -1,4 +1,12 @@
+---
+layout: default
+title: Yetkiler
+nav_order: 5
+parent: Diğer Kaynaklar
+---
+
 # users
+
 
 ```yaml
 ## kullanıcı

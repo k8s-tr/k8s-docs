@@ -1,3 +1,9 @@
+---
+layout: default
+title:  Jobs & Cronjobs
+nav_order: 2
+---
+
 # Jobs & Cronjobs
 
 https://redhat-scholars.github.io/kubernetes-tutorial/kubernetes-tutorial/jobs-cronjobs.html

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Volumes
+nav_order: 0
+parent: Diğer Kaynaklar
+---
+
 # volumes
 
 https://redhat-scholars.github.io/kubernetes-tutorial/kubernetes-tutorial/volumes-persistentvolumes.html

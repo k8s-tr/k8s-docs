@@ -1,3 +1,10 @@
+---
+layout: default
+title: Etiketler
+nav_order: 1
+parent: Önemli Kaynaklar
+---
+
 # Label
 
 Servicelerin deploymentlarla ilişkisini test ediyoruz.

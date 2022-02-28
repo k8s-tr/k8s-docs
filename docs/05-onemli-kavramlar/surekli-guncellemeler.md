@@ -1,3 +1,10 @@
+---
+layout: default
+title: Sürekli Güncellemeler
+nav_order: 2
+parent: Önemli Kaynaklar
+---
+
 # Sürekli Güncellemeler (Rolling Updates)
 
 ```sh

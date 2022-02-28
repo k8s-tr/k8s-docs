@@ -1,6 +1,7 @@
 ---
 layout: default
-title:  "ingress"
+title:  Ingress
+nav_order: 1
 ---
 
 # ingress 

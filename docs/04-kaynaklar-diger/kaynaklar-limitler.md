@@ -1,3 +1,9 @@
+---
+layout: default
+title:  Kaynaklar ve Limitler
+nav_order: 3
+---
+
 # Kaynaklar ve Limitler
 
 ```sh

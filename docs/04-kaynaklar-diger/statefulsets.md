@@ -2,7 +2,6 @@
 layout: default
 title: StatefulSets
 nav_order: 0
-permalink: statefulsets.html
 ---
 
 # statefulsets
