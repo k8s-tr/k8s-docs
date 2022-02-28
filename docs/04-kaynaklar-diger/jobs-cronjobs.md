@@ -2,6 +2,7 @@
 layout: default
 title:  Jobs & Cronjobs
 nav_order: 2
+parent: Diğer Kaynaklar
 ---
 
 # Jobs & Cronjobs

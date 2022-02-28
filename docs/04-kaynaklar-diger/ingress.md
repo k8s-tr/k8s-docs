@@ -2,6 +2,7 @@
 layout: default
 title:  Ingress
 nav_order: 1
+parent: Diğer Kaynaklar
 ---
 
 # ingress 

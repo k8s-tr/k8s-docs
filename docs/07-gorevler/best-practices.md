@@ -1,7 +1,7 @@
 ---
-title:  "best practices"
-date:   2022-02-25 21:48:02 +0300
-layout: post
+title:  İyi Pratikler
+layout: default
+parent: Görevler
 ---
 
 # best practices

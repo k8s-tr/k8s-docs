@@ -2,6 +2,7 @@
 layout: default
 title:  Kaynaklar ve Limitler
 nav_order: 3
+parent: Diğer Kaynaklar
 ---
 
 # Kaynaklar ve Limitler

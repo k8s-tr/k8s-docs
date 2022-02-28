@@ -71,7 +71,7 @@ nav_order: 0
 * [Service Nasıl Çalışır?](docs/service-nasil.md)
 * [Canlı ortam Kontrol Listesi](docs/prod_checklist.md)
 * [İyi pratikler](docs/best-practices.md)
-
+* [Sertifika](cka.md)
 
 # Uygulama Kaynakları
 
