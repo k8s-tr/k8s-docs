@@ -1,3 +1,10 @@
+---
+layout: default
+title:  Secrets
+parent: Temel Kaynaklar
+nav_order: 4
+---
+
 # Secrets (giz)
 
 Uygulamayı Kurun

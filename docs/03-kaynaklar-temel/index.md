@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Temel Kavramlar
+title: Temel Kaynaklar
 nav_order: 3
 has_children: true
 ---

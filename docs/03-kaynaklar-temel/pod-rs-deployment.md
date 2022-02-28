@@ -1,3 +1,10 @@
+---
+layout: default
+title:  Pod, ReplicaSet, Deployment
+parent: Temel Kaynaklar
+nav_order: 1
+---
+
 # Pod, ReplicaSet, Deployment
 
 Önce çalışmak için bir ad alanı oluşturun:

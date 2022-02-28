@@ -1,3 +1,10 @@
+---
+layout: default
+title:  Service
+parent: Temel Kaynaklar
+nav_order: 2
+---
+
 # Service
 
 **Yapı** 

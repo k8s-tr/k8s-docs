@@ -1,4 +1,11 @@
-#configmap
+---
+layout: default
+title:  ConfigMaps
+parent: Temel Kaynaklar
+nav_order: 3
+---
+
+# configmap
 
 **ConfigMap**, uygulamanızın yapılandırmasını harici hale getirmenize izin veren Kubernetes kaynağıdır.
 
