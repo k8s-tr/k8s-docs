@@ -1,3 +1,11 @@
+---
+layout: default
+title: Önemli Kaynaklar
+nav_order: 5
+has_children: true
+parent: 
+---
+
 # taints & affinity
 
 Bir Kubernetes Düğümüne, zamanlayıcıya belirli Bölmelerden kaçınması veya planlamaması için sinyal gönderen bir ``taint`` (kusur) uygulanır.

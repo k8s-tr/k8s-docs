@@ -7,71 +7,66 @@ nav_order: 0
 
 # Kubernetes Eğitimi
 
-# [Ön Koşullar](docs/on-kosullar.html)
+# [Ön Koşullar](docs/prerequests.html)
 
 ## Temel Kavramlar
-* [Neden Kontainerlar?](docs/neden.md)
-* [Docker](docs/docker.md)
-* [Bileşenler](docs/bilesen.md)
-* [Küme Mimarisi](docs/mimari.md)
-* [kubectl](docs/kubectl.md)
+* [Neden Kontainerlar?](docs/01-temel-kavramlar/neden.html)
+* [Docker](docs/01-temel-kavramlar/docker.html)
+* [Bileşenler](docs/01-temel-kavramlar/bilesen.html)
+* [Küme Mimarisi](docs/01-temel-kavramlar/mimari.html)
+* [kubectl](docs/01-temel-kavramlar/kubectl.html)
 
 ## Kurulum Alternatifleri 
 
-- :trophy: Canlıya uygun, ölçeklenebilir, yönetilebilir. 
-- :gift_heart: Beğendiklerim
-- :rowboat: Sadece Geliştirme ve öğrenme ortamı için
-- :bike: IOT ve Edge için
-
-* [Kubespray](docs/kubespray.md) :trophy::gift_heart:
-* [micro8s](docs/micro8s.md) :bike::gift_heart:
-* [k0s](https://github.com/k0sproject/k0s) :bike: 
-* [k3s](https://k3s.io/) :bike:
-* [kind](https://kind.sigs.k8s.io/) :rowboat:
-* [Docker Desktop](https://www.docker.com/products/docker-desktop) :rowboat:
-* [Rancher Desktop](https://rancherdesktop.io/) :rowboat:
-* [Minikube](https://minikube.sigs.k8s.io/docs/) :rowboat:
-
+* [Kubespray](docs/02-kurulum/kubespray.html) - Canlıya uygun, ölçeklenebilir, yönetilebilir. 
+* [micro8s](docs/02-kurulum/micro8s.html) - IOT ve Edge için, Canlıya uygun, ölçeklenebilir, yönetilebilir. 
+* [k0s](https://github.com/k0sproject/k0s) - IOT ve Edge için
+* [k3s](https://k3s.io/) - IOT ve Edge için
+* [kind](https://kind.sigs.k8s.io/) - Sadece Geliştirme ve öğrenme ortamı için
+* [Docker Desktop](https://www.docker.com/products/docker-desktop) - Sadece Geliştirme ve öğrenme ortamı için
+* [Rancher Desktop](https://rancherdesktop.io/) - Sadece Geliştirme ve öğrenme ortamı için
+* [Minikube](https://minikube.sigs.k8s.io/docs/) - Sadece Geliştirme ve öğrenme ortamı için
 
 ## Temel Kaynaklar
 
-* [Pod,ReplicaSet,Deployment](docs/pod-rs-deployment.md)
-* [Service](docs/service.md)
-* [ConfigMaps](docs/configmaps.md)
-* [Secrets](docs/secrets.md)
+* [Pod,ReplicaSet,Deployment](docs/03-kaynaklar-temel/pod-rs-deployment.html)
+* [Service](docs/03-kaynaklar-temel/service.html)
+* [ConfigMaps](docs/03-kaynaklar-temel/configmaps.html)
+* [Secrets](docs/03-kaynaklar-temel/secrets.html)
 
 ## Diğer Kaynaklar
-* [Volumes](docs/volumes.md)
-* [İşler ve Zamanlı İşler](docs/jobs-cronjobs.md)
-* [DaemonSet](docs/daemonsets.md)
-* [StatefulSet](docs/statefulsets.md)
-* [Ingress](docs/ingress.md)
-* [Yatay Pod Ölçeklendirme](docs/hpa.md)
-* [Yetkiler](docs/yetkiler.md)
-* [Kaynaklar ve Limitler](docs/kaynaklar-limitler.md)
-* [CRD](docs/crd.md) - 
+
+* [Volumes](docs/04-kaynaklar-diger/volumes.html)
+* [İşler ve Zamanlı İşler](docs/04-kaynaklar-diger/jobs-cronjobs.html)
+* [DaemonSet](docs/04-kaynaklar-diger/daemonsets.html)
+* [StatefulSet](docs/04-kaynaklar-diger/statefulsets.html)
+* [Ingress](docs/04-kaynaklar-diger/ingress.html)
+* [Yatay Pod Ölçeklendirme](docs/04-kaynaklar-diger/hpa.html)
+* [Yetkiler](docs/04-kaynaklar-diger/yetkiler.html)
+* [Kaynaklar ve Limitler](docs/04-kaynaklar-diger/kaynaklar-limitler.html)
+* [CRD](docs/04-kaynaklar-diger/crd.html)
 
 ## Önemli Kavramlar
-* [Label](docs/label.md)
-* [İtme ve Çekme](docs/taints-affinity.md)
-* [Sürekli Güncellemeler](docs/surekli-guncellemeler.md)
-* [Sağlık Kontrolü](docs/canlilik-hazirlik.md)
+* [Label](docs/05-onemli-kavramlar/label.html)
+* [İtme ve Çekme](docs/05-onemli-kavramlar/taints-affinity.html)
+* [Sürekli Güncellemeler](docs/05-onemli-kavramlar/surekli-guncellemeler.html)
+* [Sağlık Kontrolü](docs/05-onemli-kavramlar/canlilik-hazirlik.html)
 
 # Ek Araçlar
-* [Yük Dengeleme](docs/metallb.md)
-* [Kustomize](docs/kustomize.md)
-* [Helm](docs/helm.md)
-* [ArgoCD](docs/argocd.md)
-* [Service Mesh](docs/service-mesh.md) - 
+* [Yük Dengeleme](docs/06-ek-araclar/metallb.html)
+* [Kustomize](docs/06-ek-araclar/kustomize.html)
+* [Helm](docs/06-ek-araclar/helm.html)
+* [ArgoCD](docs/06-ek-araclar/argocd.html)
+* [Service Mesh](docs/06-ek-araclar/service-mesh.html) 
 
 ## Görevler
-* [Güvenlik](docs/güvenlik.md)
-* [Servis Özelliğinin Farklı Kullanımı](docs/lb-dis-servisler.md)
-* [Günlük Kayıtları](docs/logs.md)
-* [Service Nasıl Çalışır?](docs/service-nasil.md)
-* [Canlı ortam Kontrol Listesi](docs/prod_checklist.md)
-* [İyi pratikler](docs/best-practices.md)
-* [Sertifika](cka.md)
+* [Güvenlik](docs/07-gorevler/güvenlik.html)
+* [Servis Özelliğinin Farklı Kullanımı](docs/07-gorevler/lb-dis-servisler.html)
+* [Günlük Kayıtları](docs/07-gorevler/logs.html)
+* [Service Nasıl Çalışır?](docs/07-gorevler/service-nasil.html)
+* [Canlı ortam Kontrol Listesi](docs/07-gorevler/prod_checklist.html)
+* [İyi pratikler](docs/07-gorevler/best-practices.html)
+* [Sertifika](docs/07-gorevler/cka.html)
 
 # Uygulama Kaynakları
 

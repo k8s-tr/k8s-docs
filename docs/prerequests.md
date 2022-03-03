@@ -2,7 +2,6 @@
 layout: default
 title: Ön Koşullar
 nav_order: 0
-permalink_url: on-kosullar.html
 ---
 
 
