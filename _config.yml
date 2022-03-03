@@ -56,7 +56,7 @@ search:
 # Aux links for the upper right navigation
 aux_links:
   "K8s Temel Eğitim on GitHub":
-    - "//edib.github.io/k8s-egitim/"
+    - "//github.com/edib/k8s-egitim/"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
