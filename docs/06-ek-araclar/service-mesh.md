@@ -26,9 +26,14 @@ Istio, mevcut dağıtılmış uygulamalar üzerinde şeffaf bir şekilde katman 
 ### İstio Kaynakları
 
 #### Gateway
+
 Istio'nun ingress denetleyicisidir. 
 #### VirtualService
+
 ingress tanımıdır.
 #### Destination Rules
+
+Yönlendirme ve iş kuralı tanımları
+
 
 

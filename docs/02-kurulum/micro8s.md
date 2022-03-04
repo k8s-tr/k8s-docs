@@ -12,62 +12,26 @@ nav_order: 2
 Canonical firmasının Kubernetes dağıtımıdır. 
 
 ##  linux için
+
 ```
 
  sudo snap install microk8s --classic
  
 # kurulmasını bekliyoruz.
 microk8s status --wait-ready
- 
-# istediğimiz servisleri etkinleştiriyoruz
-microk8s enable dashboard dns registry istio
- 
- 
-#kubectl
- 
-cd $HOME
-mkdir .kube
-cd .kube
-microk8s config > config
- 
-snap install kubectl --classic
-
-```
 
 
-```
-microk8s enable --help
-microk8s disable <modul_adı>
+alias kubectl="microk8s kubectl"
+alias k="kubectl"
 
-```
-
-```
-# dev ortamında token vb uğraşmamak doğrudan giriş yapmak için
-kubectl -n kube-system edit deployment/kubernetes-dashboard
- 
-# bu satırları
-      containers:
-      - args:
-        - --auto-generate-certificates
-        - --namespace=kube-system
- 
-# bu şekilde değiştirin.
-      containers:
-      - args:
-        - --auto-generate-certificates
-        - --namespace=kube-system
-        - --enable-skip-login
- 
- 
-# k dashboardu aktif etmek için
-microk8s dashboard-proxy
+alias m="microk8s"
 
 ```
 
 #### Kullanılabilir ek hizmetler. 
 
 ```
-microk8s status --wait-ready
+m status
  
 microk8s is running
 high-availability: no
@@ -106,19 +70,67 @@ addons:
     traefik              # traefik Ingress controller for external access
 ```
 
+####  komutlar
+
 ```
-# istediğiniz zaman kapatıp açmak için
-microk8s stop
-microk8s start
+microk8s
+
+Available subcommands are:
+	add-node # 
+	cilium # Another CNI
+	config
+	ctr # containerd client
+	dashboard-proxy
+	dbctl # backup and restore the Kubernetes datastore.
+	disable 
+	enable
+	helm3
+	helm
+	istioctl # service mesh
+	join
+	juju
+	kubectl
+	leave # The node will depart from the cluster it is in.
+	linkerd # service mesh
+	refresh-certs #   Replace the CA certificates with the ca.crt and ca.key found in CA_DIR.
+	remove-node
+	reset
+	start
+	status
+	stop 
+	inspect # This script will inspect your microk8s installation. It will report any issue it finds,
+and create a tarball of logs and traces which can be attached to an issue filed against
+the microk8s project.
+
+
+# istediğimiz servisleri etkinleştiriyoruz
+
+# registry: kendi registryniz olsun isterseniz. 
+microk8s enable dashboard dns registry
+
+
+# dashboarda nodeport üzerinden erişmek için
+kubectl -n kube-system patch svc kubernetes-dashboard --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
+
+# dashboard nodeportunu öğreniyoruz.
+
+k describe svc kubernetes-dashboard -n kube-system | grep NodePort
+
+
+# dashboarda erişim için aşağıdaki komuttan çıkan token'ı kullanıyoruz.
+kubectl -n kube-system get secret $(kubectl -n kube-system get sa default -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" && echo
+ 
 ```
 
-### yeni node eklemek
 
-```sh
+#### yeni node eklemek
+
+```
 
 microk8s add-node
 
-# çıkan komutu diğer nodlarda çalıştırın
+# çıkan komutu diğer nodlarda microk8s kurduktan sonra çalıştırın
+
 
 
 ```
