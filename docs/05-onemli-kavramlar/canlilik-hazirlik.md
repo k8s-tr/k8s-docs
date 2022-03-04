@@ -1,3 +1,10 @@
+---
+layout: default
+title: Canlılık ve Hazırlık
+nav_order: 5
+parent: Önemli Kaynaklar
+---
+
 # Canlılık ve Hazırlık
 
 ## Liveness
