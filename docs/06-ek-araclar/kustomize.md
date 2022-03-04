@@ -1,3 +1,9 @@
+---
+title:  kustomize
+layout: default
+parent: Ek Araçlar
+---
+
 # kustomize 
 
 Referans

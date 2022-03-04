@@ -1,3 +1,11 @@
+---
+layout: default
+parent: Görevler
+nav_order: 4
+title: Günlük Kayıtları
+---
+
+
 # Günlük Kayıtları
 
 https://kubernetes.io/docs/concepts/cluster-administration/logging/

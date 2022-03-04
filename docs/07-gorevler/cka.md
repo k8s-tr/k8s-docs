@@ -1,4 +1,11 @@
---- # CKA Konuları
+---
+layout: default
+parent: Görevler
+nav_order: 5
+title: CKA Konuları
+---
+
+# CKA Konuları
 
 ## Genel Bakış - Kubernetes ve bileşenlerine genel bakış
 ## Küme Mimarisi - Kubernetes arkasındaki mimarisi yapı

@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Önemli Kaynaklar
+title: İtme ve Çekme
 nav_order: 5
-has_children: true
-parent: 
+parent: Önemli Kaynaklar
 ---
 
 # taints & affinity

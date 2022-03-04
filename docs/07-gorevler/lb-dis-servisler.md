@@ -1,4 +1,11 @@
-# iç lb
+---
+layout: default
+parent: Görevler
+nav_order: 3
+title: İç Yük Dengeleme
+---
+
+# İç Yük Dengeleme
 
 * nginx.conf configmapte saklanarak tcp load balance özelliği kullanılabilir.
 

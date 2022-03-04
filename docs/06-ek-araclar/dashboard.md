@@ -1,3 +1,9 @@
+---
+title:  Dashboard
+layout: default
+parent: Ek Araçlar
+---
+
 # Dashboard
 
 [Kullanılabilecek farklı tagler](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/ansible.md)

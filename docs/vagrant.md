@@ -1,3 +1,9 @@
+---
+layout: default
+title: Vagrant Kurulumu
+nav_order: 1
+---
+
 ## Virtualbox ve Vagrant kurulumu
 İndirin ve kurun
 

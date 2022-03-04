@@ -2,9 +2,10 @@
 title:  İyi Pratikler
 layout: default
 parent: Görevler
+nav_order: 5
 ---
 
-# best practices
+# İyi Pratikler
 
 ## Erişilebilirlik
 

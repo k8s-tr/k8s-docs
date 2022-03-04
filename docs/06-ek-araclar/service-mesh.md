@@ -1,3 +1,9 @@
+---
+title:  Service Mesh 
+layout: default
+parent: Ek Araçlar
+---
+
 # Service Mesh 
 * **Microservis Bağlantısı:** Mikroservislerin birbirleriyle konuşmasını ve bağlantıların akıllı bir şekilde yönlendirilmesini sağlar.
 * **Güvenlik:** Merkezi bir yapılandırmayla servisler arası güvenli iletişim ve merkezi erişim ve sınırlandırma politikaları uygulanabilir.

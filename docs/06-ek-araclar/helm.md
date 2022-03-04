@@ -1,3 +1,9 @@
+---
+title:  Helm
+layout: default
+parent: Ek Araçlar
+---
+
 # helm
 
 Bir k8s uygulama kümesinin (deployment, service, configmap, secrets, ingress ... birlikte) kolayca yönetilebilmesi ve bir bütün olarak taşınabilmesi için üretilmiş bir yapılandırma paket yönetimidir. 

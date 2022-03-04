@@ -1,4 +1,10 @@
-# lb
+---
+title:  MetalLB
+layout: default
+parent: Ek Araçlar
+---
+
+# MetalLB
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/master/manifests/namespace.yaml

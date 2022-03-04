@@ -1,3 +1,9 @@
+---
+title:  kubeadm
+layout: default
+parent: Ek Araçlar
+---
+
 # kubeadm
 
 
