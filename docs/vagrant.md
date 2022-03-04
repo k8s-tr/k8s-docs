@@ -1,7 +1,9 @@
 ---
 layout: default
 title: Vagrant Kurulumu
-nav_order: 1
+parent: 
+nav_order: 0
+parent: Kurulum
 ---
 
 ## Virtualbox ve Vagrant kurulumu
