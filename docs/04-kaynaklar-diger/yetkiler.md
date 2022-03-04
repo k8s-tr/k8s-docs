@@ -66,7 +66,9 @@ User Secret'ini al.
 
 # PLACE USER TOKEN HERE
 # Kullanıcı Tokenı 
+{% raw %}
 kubectl -n mys get secret $(kubectl -n myspace get sa/devs -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+{% endraw %}
 
 # PLACE CERTIFICATE HERE
 # kullanıcı sertifikası

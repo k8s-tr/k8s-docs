@@ -71,9 +71,9 @@ subjects:
 dashboardta kullanılacak token
 
 ```sh
-
+{% raw %}
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
-
+{% endraw %}
 ```
 
 [dashboard](https://github.com/kubernetes/dashboard/blob/master/docs/images/signin.png)

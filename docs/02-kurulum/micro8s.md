@@ -118,8 +118,9 @@ k describe svc kubernetes-dashboard -n kube-system | grep NodePort
 
 
 # dashboarda erişim için aşağıdaki komuttan çıkan token'ı kullanıyoruz.
-kubectl -n kube-system get secret $(kubectl -n kube-system get sa default -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" && echo
- 
+{% raw %}
+kubectl -n kube-system get secret $(kubectl -n kube-system get sa default -o jsonpath="{.secrets[0].name}") -o go-template="{{ .data.token | base64decode }}" && echo
+{% endraw %}
 ```
 
 

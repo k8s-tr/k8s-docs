@@ -95,8 +95,10 @@ appVersion: 1.16.0
 ```
 
 ```yaml
+{% raw %}
  spec: 
   replicas: {{ .Values.replicaCount }}
+{% endraw %}
 
 #values.yaml içerisinde tanımlanır.
 
