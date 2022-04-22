@@ -6,8 +6,8 @@ nav_order: 0
 
 
 # Kubernetes Eğitimi
-
-# [Ön Koşullar](docs/prerequests.html)
+ 
+* [Ön Koşullar](docs/prerequests.html)
 
 ## Temel Kavramlar
 * [Neden Kontainerlar?](docs/01-temel-kavramlar/neden.html)
