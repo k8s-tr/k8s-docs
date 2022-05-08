@@ -28,8 +28,7 @@ nav_order: 0
 * [ağ kavramları](https://www.youtube.com/playlist?list=PLDUOF2Be-kzn8h0-eI0HSADJsaDDu3IUj)
 * [Konteynerler](https://www.youtube.com/watch?v=hUnST9FY39I)
 * [Mikroservisler](https://www.youtube.com/watch?v=Jta9jw9kAVc)
-* [Devops](https://www.youtube.com/watch?v=LI9FEQyopSg)
-* [Devops](https://www.youtube.com/playlist?list=PLAocyzWJktm5nxI97bQaFiiXtWO8tawCC)
+* Devops [1](https://www.youtube.com/watch?v=LI9FEQyopSg), [2](https://www.youtube.com/playlist?list=PLAocyzWJktm5nxI97bQaFiiXtWO8tawCC)
 * [Gitops ve Kubernetes](https://www.youtube.com/watch?v=Utjni_LbMxc)
 * [Netops](https://www.linkedin.com/learning/netops-devops-for-network-engineers-automating-networks/) 
 
