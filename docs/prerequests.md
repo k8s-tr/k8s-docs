@@ -31,6 +31,5 @@ nav_order: 0
 * [Devops](https://www.youtube.com/watch?v=LI9FEQyopSg)
 * [Devops](https://www.youtube.com/playlist?list=PLAocyzWJktm5nxI97bQaFiiXtWO8tawCC)
 * [Gitops ve Kubernetes](https://www.youtube.com/watch?v=Utjni_LbMxc)
-* [Netops] - 
-* Docker ve konteyner imajları oluşturma 
+* [Netops](https://www.linkedin.com/learning/netops-devops-for-network-engineers-automating-networks/) 
 
