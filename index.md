@@ -86,3 +86,7 @@ nav_order: 0
 * [k9scli](https://k9scli.io/) - Havalı K8s terminali
 * [KubeVirt](https://kubevirt.io/) - Konteynerleştiremediğin iş yükünü yöneteceksin.
 * [Argo CD](https://argo-cd.readthedocs.io/en/stable/) -  Kubernetes için Declarative GitOps CD 
+
+# İleri Düzey Konular
+
+* [Kubernetes Ağ Yapılandırması](docs/08-ileri-duzey/ag-yapilandirması.html)
