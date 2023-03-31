@@ -7,6 +7,8 @@ nav_order: 1
 
 # Pod, ReplicaSet, Deployment
 
+Bu kavramlar tamamen mantıksal kavramlardır. 
+
 Önce çalışmak için bir ad alanı oluşturun:
 
 ```bash
@@ -16,6 +18,10 @@ kubectl config set-context --current --namespace=myspace
 ```
 
 ## Pod 
+
+Pod, birden fazla konteyneri içeren ve bu konteynerlerin aynı fiziksel veya sanal makinede çalışmasını sağlayan bir kavramdır. Bu konteynerler, birbirleriyle iletişim kurabilirler ve aynı kaynakları paylaşabilirler. Pod, birim olarak yönetilir ve Kubernetes, podların sağlığını kontrol ederek, yeniden başlatarak ve gerektiğinde yeniden oluşturarak uygulamanın sürekli çalışmasını sağlar.
+
+Pod'lar, Kubernetes'in temel yapı taşlarından biridir ve uygulamaların oluşturulmasını ve yönetilmesini kolaylaştırır. Pod'lar, uygulamanın farklı parçalarını bir arada tutarak, uygulamanın bütünlüğünü ve güvenliğini korur.
 
 * yalnız pod (prodda kullanmayın)
   
@@ -76,6 +82,12 @@ No resources found in myspace namespace.
 ```
 
 ## ReplicaSet
+
+Replicaset, pod'ların istenen sayıda kopyasını oluşturma, yönetme ve kontrol etme işlemini otomatikleştirir. Yani, Replicaset, belirli bir pod sayısını korumak için pod'ların ölçeklenmesini otomatik olarak yapar. Örneğin, bir uygulamanın üç kopyasının her zaman çalışır durumda olmasını sağlamak için, bir Replicaset yapılandırılabilir ve bu şekilde uygulama ölçeklenebilir hale getirilir.
+
+Replicaset, uygulamanın sağlığını kontrol eder ve pod'ların yanıt vermediğinde veya yanıt vermediğinde yeniden oluşturulmasını sağlar. Ayrıca, Replicaset, yeni pod'ların oluşturulmasını da sağlayabilir, böylece uygulama yükü arttığında ölçeklenebilirlik sağlanır.
+
+Replicaset, Kubernetes'in güvenilirlik ve ölçeklenebilirlik özelliklerine katkıda bulunan önemli bir yapıdır.
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -184,6 +196,14 @@ kubectl delete pod rs-quarkus-demo-mlnng
 
 ## Deployment
 
+Kubernetes'de, uygulamanın güncellenmesi ve sürüm kontrolü gibi işlemleri yönetmek için "Deployment" adında bir yapı kullanılır. Deployment, pod'ların belirli bir özellik setini tanımlayan bir YAML dosyası aracılığıyla yapılandırılır.
+
+Deployment, uygulamanın önceki sürümlerinden farklı olarak, belirli bir zamanda kaç pod'un çalışması gerektiğini belirleyen Replicaset yapılarını oluşturur. Ayrıca, Deployment, güncelleme işlemini gerçekleştirirken eski sürüm pod'larının kaldırılması ve yeni sürüm pod'larının oluşturulması gibi işlemleri otomatik olarak yapar.
+
+Deployment, önceden tanımlanmış bir stratejiye göre işlem yaparak, uygulamanın durmamasını veya müşterilerin etkilenmemesini sağlayarak güncelleme işlemini gerçekleştirir. Yani, Deployment yapılandırılırken, uygulama güncellemeleri gerçekleştirilirken nelere dikkat edilmesi gerektiği ve hangi stratejilerin kullanılacağı belirlenir.
+
+Deployment, uygulamanın farklı sürümlerinin yönetimini kolaylaştırır ve uygulama sürümleri arasında hızlı bir şekilde geçiş yapılmasına olanak tanır. Bu sayede, uygulama geliştirme süreci daha hızlı ve güvenli hale getirilebilir.
+
 ```sh
 
 cat <<EOF | kubectl apply -f -
@@ -228,8 +248,3 @@ kubectl exec -it quarkus-demo-deployment-5979886fb7-c888m -- curl localhost:8080
 ```
 
 [Sonraki](service.md)
-
-
-
-
-
