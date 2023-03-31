@@ -2,7 +2,7 @@
 layout: default
 title: Etiketler
 parent: Temel Kavramlar
-nav_order: 5
+nav_order: 6
 ---
 
 ##  Labels
