@@ -7,7 +7,13 @@ nav_order: 3
 
 # configmap
 
-**ConfigMap**, uygulamanızın yapılandırmasını harici hale getirmenize izin veren Kubernetes kaynağıdır.
+Kubernetes'de, uygulama yapılandırması gibi çeşitli konfigürasyon bilgileri için ConfigMap adında bir yapı kullanılır. ConfigMap, uygulama konfigürasyonlarını, ortam değişkenlerini, dosya içeriklerini ve diğer konfigürasyonlarını içerebilir.
+
+ConfigMap, YAML dosyaları aracılığıyla yapılandırılır ve bir veya daha fazla anahtar-değer çifti içerir. Bu anahtar-değer çiftleri, uygulamanın ihtiyacı olan konfigürasyon bilgilerini temsil eder. Uygulama içinde bu konfigürasyon bilgilerine erişmek için ConfigMap adına göre çağrı yapılabilir.
+
+ConfigMap'ler, Deployment, Pod veya diğer Kubernetes yapıları tarafından referans edilebilir. Bu yapılar, ConfigMap'leri, pod'ların çalıştığı konteynerlerde kullanılan ortam değişkenleri veya ConfigMap dosyaları yoluyla uygulama konfigürasyonlarına dahil edebilir.
+
+ConfigMap'ler, uygulama konfigürasyonlarının yönetimini kolaylaştırır ve uygulama sürümleri arasında hızlı bir şekilde geçiş yapılmasına olanak tanır. Bu sayede, uygulama geliştirme süreci daha hızlı ve güvenli hale getirilebilir. Ayrıca, ConfigMap'ler, uygulamanın çevreler arası geçişini de kolaylaştırır.
 
 * https://12factor.net/config
 
