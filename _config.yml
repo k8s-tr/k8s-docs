@@ -24,6 +24,9 @@ syntax_highlighter_style: colorful
 # Enable or disable the site search
 # Supports true (default) or false
 search_enabled: true
+mermaid: true
+mermaid:
+  version: "10.0.2"
 
 search:
   # Split pages into sections that can be searched individually
