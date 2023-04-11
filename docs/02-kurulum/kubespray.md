@@ -24,8 +24,6 @@ Sağladıkları:
 
 ## Kurulum
 
----
-
 ## Desktop Ortama Kurmak (Bonus)
 
 Kendi ortamımızda test etmek istiyorsak [vagrant](vagrant.md) dosyasındaki vagrant ve virtualbox araçlarıyla hızlıca deneyebiliriz.

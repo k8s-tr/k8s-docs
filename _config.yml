@@ -24,6 +24,9 @@ syntax_highlighter_style: colorful
 # Enable or disable the site search
 # Supports true (default) or false
 search_enabled: true
+mermaid: true
+mermaid:
+  path: "/asssets/js/mermaid-10.0.2.min.js"
 
 search:
   # Split pages into sections that can be searched individually
