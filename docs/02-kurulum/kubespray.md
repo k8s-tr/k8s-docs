@@ -19,8 +19,7 @@ Sağladıkları:
 * Eklenti ekleme, çıkarma
 
 ## Kurulum
-
-```mermaid
+{% mermaid %}
 graph TD
 A(Ansible Controller)  --> B(Master & Etcd)
 A(Ansible Controller)  --> C(Master & Etcd)
@@ -28,9 +27,9 @@ A(Ansible Controller)  --> D(Master & Etcd)
 A(Ansible Controller)  ---> E(Worker)
 A(Ansible Controller)  ---> F(..)
 A(Ansible Controller)  ---> G(Worker)
-```
-```mermaid
+{% endmermaid %}
 
+{% mermaid %}
 graph TD
 A(Ansible Controller)  --> B[Etcd]
 A(Ansible Controller)  --> C[Etcd]
@@ -42,7 +41,7 @@ A(Ansible Controller)  ----> H(Worker)
 A(Ansible Controller)  ----> J(..)
 A(Ansible Controller)  ----> K(Worker)
 
-```
+{% endmermaid %}
 
 ---
 
