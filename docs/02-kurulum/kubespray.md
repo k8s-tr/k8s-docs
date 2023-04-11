@@ -17,32 +17,12 @@ Sağladıkları:
 * HA:  https://github.com/kubernetes-sigs/kubespray/blob/master/docs/ha-mode.md
 * node ekleme ve çıkarma, güncelleme
 * Eklenti ekleme, çıkarma
+* farklı kurulumları destekler 
+    1. masterlar ve etcdler birlikte
+    2. etcd serverlar ayrı sunucularda ( >=3, tek haneli)
+    3. master ve etcd sayıları ayarlanabilir. 
 
 ## Kurulum
-
-```mermaid
-graph TD
-A(Ansible Controller)  --> B(Master & Etcd)
-A(Ansible Controller)  --> C(Master & Etcd)
-A(Ansible Controller)  --> D(Master & Etcd)
-A(Ansible Controller)  ---> E(Worker)
-A(Ansible Controller)  ---> F(..)
-A(Ansible Controller)  ---> G(Worker)
-```
-```mermaid
-
-graph TD
-A(Ansible Controller)  --> B[Etcd]
-A(Ansible Controller)  --> C[Etcd]
-A(Ansible Controller)  --> D(Etcd)
-A(Ansible Controller)  ---> E(Master)
-A(Ansible Controller)  ---> F(Master)
-A(Ansible Controller)  ---> G(Master)
-A(Ansible Controller)  ----> H(Worker)
-A(Ansible Controller)  ----> J(..)
-A(Ansible Controller)  ----> K(Worker)
-
-```
 
 ---
 
@@ -70,6 +50,7 @@ cp -rfp inventory/sample inventory/mycluster
 ```
 
 * Kubernetes kuracağınız sunucuların listesini Ansible'a veriyoruz.
+* Bu komut ip adreslerini ilk 2.si master ve etcd olacak şekilde nodelar olarak `inventory/mycluster/hosts.yaml` içerisine yazar. 
 
 ```
 declare -a IPS=(<server1_ip> <server2_ip> <server3_ip>)
