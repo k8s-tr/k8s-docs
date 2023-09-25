@@ -1,3 +1,9 @@
+---
+layout: default
+title: Güvenlik
+nav_order: 1
+has_children: true
+---
 
 
 * namespaced 
@@ -27,8 +33,8 @@ metadata:
     app: my-app
 spec:
   containers:
-  - name: nginx
-    image: nginx:latest
+  - name: alpine
+    image: alpine:latest
 ```
 
 2. A Pod with the label `role: frontend`:
@@ -41,8 +47,8 @@ metadata:
     role: frontend
 spec:
   containers:
-  - name: nginx
-    image: nginx:latest
+  - name: alpine
+    image: alpine:latest
 ```
 
 3. A Pod with the label `role: backend`:
@@ -55,8 +61,8 @@ metadata:
     role: backend
 spec:
   containers:
-  - name: nginx
-    image: nginx:latest
+  - name: alpine
+    image: alpine:latest
 ```
 
 ** network policy **
