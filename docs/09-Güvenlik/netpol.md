@@ -2,7 +2,7 @@
 layout: default
 title: Network Policy
 nav_order: 1
-has_children: true
+parent: Güvenlik
 ---
 
 
