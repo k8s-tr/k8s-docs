@@ -173,6 +173,7 @@ kubectl exec -it database --namespace=network-policy-tutorial -- curl <BACKEND-C
 ### deny all (first policy)
 
 ```bash
+echo "
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -182,6 +183,7 @@ spec:
   policyTypes:
   - Ingress
   - Egress
+" | kubectl apply -f -
 
 ```
 

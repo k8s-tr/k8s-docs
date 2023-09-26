@@ -14,6 +14,7 @@ Kontrol düzlemi, veri düzlemi ve yönetim düzlemi, bilişim kaynaklarındaki 
 
 ## Kontrol Düzlemi Bileşenleri
 
+![](../kaynaklar/cluste.png)
 
 ### kube-apiserver
 
@@ -97,21 +98,6 @@ Service ve Endpoint objelerinin erişebilirliğini sağlamak için node üzerind
 
 * daemonset olarak oluşur. 
 
-### CNI 
-    https://docs.projectcalico.org/reference/architecture/overview
-
-##### calico
-
-kube-system altında calico-kube-controllers adında deployment olarak kurulur. calico-node olarak daemonset üretir. 
-
-```sh
-# önemli dizinler
-/opt/cni/bin/
-
-
-
-```
-
 ### container-runtime
 
 * sistem servisi olarak kurulur. 
@@ -119,15 +105,46 @@ kube-system altında calico-kube-controllers adında deployment olarak kurulur. 
 https://www.inovex.de/de/blog/containers-docker-containerd-nabla-kata-firecracker/
 https://thenewstack.io/a-security-comparison-of-docker-cri-o-and-containerd/
 
+
+### CNI 
+    https://docs.projectcalico.org/reference/architecture/overview
+
+##### calico
+
+* kube-system altında calico-kube-controllers adında deployment olarak kurulur. 
+* calico-node olarak daemonset üretir. 
+* diğer alternatifleri: [cilium](https://cilium.io/), [weave](https://www.weave.works/)
+
+```sh
+# önemli dizinler
+/opt/cni/bin/
+
+```
+
 ## Ek Özellikler
 
 # coredns
-# web ui
-    https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-# metrics-server
+kube-sytem nste deployment olarak kurulur.
 
-# prometheus
+* https://coredns.io/  
+
+* https://kubernetes.io/docs/tasks/administer-cluster/coredns/
+ 
+
+# web ui
+* https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+* https://github.com/rancher/ui
+* https://github.com/kubernetes/dashboard
+    
+# metrics-server
+* https://github.com/kubernetes-sigs/metrics-server
+
+# grafana-prometheus
+* https://grafana.com/grafana/dashboards/6417-kubernetes-cluster-prometheus/
+* https://github.com/kubernetes-monitoring/kubernetes-mixin
+
 
 # Küme Düzeyinde Loglama 
-    https://kubernetes.io/docs/concepts/cluster-administration/logging/
+* https://kubernetes.io/docs/concepts/cluster-administration/logging/
+    
 
