@@ -17,26 +17,51 @@ kubectl apply -f https://gist.github.com/rockcyj/a298fafad969e5ca8e77c3e66fa815f
 
 ```yaml
 
+apiVersion: networking.k8s.io/v1
 kind: Ingress
-apiVersion: extensions/v1beta1
 metadata:
-  name: dashboard-ingress
-  namespace: kube-system
+  name: minimal-ingress
+  namespace: kubernetes-dashboard
   annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-    nginx.ingress.kubernetes.io/ssl-passthrough: 'true'
-    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
-    - host: dashboard.mylocal
-      http:
-        paths:
+  - host: dashboard.local
+    http:
+          paths:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: kubernetes-dashboard
-              servicePort: 443
+              service:
+                name: kubernetes-dashboard
+                port:
+                  number: 80
+
+---
+
+# network-policy-tutorial   frontend
+
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  namespace: network-policy-tutorial 
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+          paths:
+          - path: /frontend
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
 
 ```
 
@@ -44,7 +69,7 @@ spec:
 ```yaml
 
 kind: Ingress
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 metadata:
   name: grafana-ingress
   namespace: monitoring
