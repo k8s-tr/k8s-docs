@@ -19,11 +19,15 @@ kubectl ve kube_config için
 
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
-chmod +x /usr/bin/kubectl
+id 
+# docker kullanıcısı 
 
-mv kubectl /usr/bin/
-
+sudo mv kubectl /usr/bin/
+sudo chmod +x /usr/bin/kubectl
+mkdir .kube
 sudo cp /etc/kubernetes/admin.conf .kube/config
+
+sudo chown docker. .kube/config
 
 kubectl get node
 
