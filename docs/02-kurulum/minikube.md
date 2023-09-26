@@ -28,3 +28,15 @@ sudo cp /etc/kubernetes/admin.conf .kube/config
 kubectl get node
 
 ```
+
+## additional minikube
+
+
+
+```bash
+eval $(minikube docker-env)
+
+docker build -t my-local-image .
+
+kubectl run mypod --image=my-local-image --image-pull-policy=Never
+```
