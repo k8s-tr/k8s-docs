@@ -17,3 +17,5 @@ Bir düğümdeki bileşenler:
 * kubelet, 
 * konteyner-runtime
 * kube-proxy
+
+[Kubernetes Mimarisi](../kaynaklar/Kubernetes-mimarisi.pdf)  
