@@ -87,8 +87,77 @@ spec:
               servicePort: 80
 ```
 
+### ingress with tls
+
+
+1. **Creating a Self-Signed Certificate**:
+
+  * a private key (`myserver.key`)
+  * a self-signed certificate (`myserver.crt`):
+
+   ```bash
+   openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myserver.key -out myserver.crt
+   ```
+
+* the "Common Name (CN)" must match the domain name
+
+
+2. **Create Kubernetes Secrets for the Certificate and Key**:
+
+* create Kubernetes secrets
+
+   ```bash
+   kubectl create secret tls myserver-tls --key myserver.key --cert myserver.crt
+   ```
+
+3. **Use the Secret in an Ingress Resource**:
+
+* Ingress resource that uses the `myserver-tls` secret for TLS:
+
+   ```yaml
+   apiVersion: networking.k8s.io/v1
+   kind: Ingress
+   metadata:
+     name: my-ingress
+     annotations:
+       kubernetes.io/ingress.class: nginx # This depends on your ingress controller.
+   spec:
+     tls:
+     - hosts:
+       - mydomain.com
+       secretName: myserver-tls
+     rules:
+     - host: mydomain.comfake 
+       http:
+         paths:
+         - path: /
+           pathType: Prefix
+           backend:
+             service:
+               name: my-service-name
+               port:
+                 number: 80
+   ```
+
+4. **Deploy and Test**:
+
+   ```bash
+   kubectl apply -f your-ingress-file.yaml
+   ```
+
+5. **Note on Trusting Self-Signed Certificates**:
+
+6. **Alternative: Using cert-manager**:
+
+#### cert-manager
+
+
+
+
 https://redhat-scholars.github.io/kubernetes-tutorial/kubernetes-tutorial/ingress.html
 
 
 * ingress yaml dosyaları
 https://github.com/redhat-scholars/kubernetes-tutorial/tree/master/apps/kubefiles
+
+

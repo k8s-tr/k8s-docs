@@ -6,11 +6,15 @@ parent: Güvenlik
 ---
 
 
+![Default Deny](../kaynaklar/default-deny.png)
+
 Pod A'nın Pod B'ye erişmesini istiyorsanız:
 
     Pod A için egress (çıkış) izinleri belirtmelisiniz.
     Pod B için ingress (giriş) izinleri belirtmelisiniz.
 
+
+![Frontend to backend](../kaynaklar/frontend-to-backend.png)
 
 ```bash
 minikube start --network-plugin=cni --cni=calico
@@ -337,6 +341,28 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
+  name: app
+spec:
+  podSelector:
+    matchLabels:
+      app: app-ui
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 10.10.10.10/32
+      ports:
+        - port: 443
+    - ports: 
+        - protocol: UDP
+          port: 53
+
+--- 
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
   name: assets
 spec:
   podSelector:
@@ -346,6 +372,52 @@ spec:
     - Egress
   egress: []
 
+```
+
+
+## namespace selector
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-frontend
+  namespace: target-namespace
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          ns: banka
+
+```
+
+```yaml
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-specific-namespace
+  namespace: target-namespace
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: In
+          values:
+          - specific-namespace
 ```
 
 

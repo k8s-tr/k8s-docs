@@ -19,6 +19,8 @@ Bulut ve işletim sistemi dağıtım taşınabilirliği: Ubuntu, RHEL, CoreOS, �
 * **Kaynak kullanımı:** Yüksek verimlilik ve yoğunluk.
 
 
+![vm-containers karşılaştırması](../kaynaklar/containers-vs-virtual-machines.jpg)
+
 # Neden Kubernetes Kullanırız?
 
 * **Servis keşfi ve yük dengeleme:** Kubernetes, bir konteyneri DNS adını veya kendi IP adreslerini kullanarak ağda sunabilir. Bir konteynere gelen trafik yüksekse, Kubernetes tüm uygulamanın kararlı olması için yükü dengeler  ve ağ trafiğini dağıtabilir.
