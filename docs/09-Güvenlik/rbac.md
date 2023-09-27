@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Network Policy
+title: RBAC
 nav_order: 1
-parent: RBAC
+parent: Güvenlik
 ---
 
 # RBAC
