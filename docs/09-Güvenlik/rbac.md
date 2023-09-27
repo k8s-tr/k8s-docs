@@ -68,6 +68,17 @@ kubectl apply -f serviceaccount.yaml
 kubectl apply -f role.yaml
 kubectl apply -f rolebinding.yaml
 
+
+# test edebiliriz.
+
+--as=system:serviceaccount:<ns>:<user>
+
+k auth can-i get pods -n=default --as=system:serviceaccount:default:pod-lister-sa
+no
+k auth can-i list pods -n=default --as=system:serviceaccount:default:pod-lister-sa
+yes
+k auth can-i create pods -n=default --as=system:serviceaccount:default:pod-lister-sa
+no
 ```
 
 
@@ -91,7 +102,7 @@ spec:
       labels:
         app: my-app
     spec:
-      automountServiceAccountToken: false
+      // automountServiceAccountToken: false
       containers:
       - name: my-container
         image: nginx:latest
@@ -111,19 +122,23 @@ kubectl get clusterrolebindings --selector=roleRef.name=default
 ```
 
 
+
 ### kubernetes user
+
+
+![Alt text](../kaynaklar/K8S_credentials_1.png)
 
 ```bash
 
-openssl genrsa -out jane.key 2048
+openssl genrsa -out user.key 2048
 
-openssl req -new -key jane.key -out jane.csr # only set Common Name = jane
+# openssl req -new -key jane.key -out jane.csr # only set Common Name = jane
 
-openssl req -new -key my-key.pem -out my-csr.csr -subj "/CN=my-service.my-namespace.svc.cluster.local"
+openssl req -new -key user.key -out user.csr -subj "/CN=my-service.my-namespace.svc.cluster.local"
 
 # create CertificateSigningRequest with base64 jane.csr
 
-cat jane.csr | base64 -w 0
+cat user.csr | base64 -w 0
 
 ```
 
