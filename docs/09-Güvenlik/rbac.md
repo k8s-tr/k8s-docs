@@ -112,6 +112,7 @@ spec:
 
 ### default sa role
 
+* default rolün bir rolebinding durumu var mı? 
 ```bash
 
 kubectl get rolebindings -n <NAMESPACE> --selector=roleRef.name=default
@@ -209,7 +210,7 @@ roleRef:
 kubectl config get-contexts
 
 k config set-credentials jane --client-key=jane.key --client-certificate=jane.crt
-k config set-context jane --cluster=minikube --user=jane
+k config set-context jane --cluster=minikube --user=jane --namespace default
 k config view
 k config get-contexts
 k config use-context jane

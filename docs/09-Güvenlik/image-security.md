@@ -10,41 +10,30 @@ parent: Güvenlik
 ## Deterministik docker  imaj etiketlerini kullanın
 
 * Genel imaj takma adları yerine SHA256 hash olanları veya deterministik imaj  sürümlerini kullanın.
-* Örnek: maven:3.6.3-jdk-11-slim@sha256:68ce1cd457891f
+* FROM maven:3.6.3-jdk-11-slim@sha256:68ce1cd457891f48d1e137c7d6a4493f60843e84c9e2634e3df1d3d5b381d36c
 * İşletim sistemlerinin bir sürümlerini aşağıdaki gibi alarak deterministik bir sürüm alabiliriz.
-Yalnızca ihtiyacınız olanı kurun
+
+## Yalnızca ihtiyacınız olanı kurun
 
 Bir JDK'ya, Java koduna veya Maven ve Gradle gibi bir derleme aracına ihtiyacınız yoktur. Bunun yerine,
 
         Sadece WAR ya da Jar dosyasınızı kopyalayın.
         JRE ürününü veya imajnını kullanın.
 
-
 Uygulamaların koşacağı imajı bu şekilde üretirsek sadece jre kurmuş oluyoruz. Ayrıca boyut 120MB azalıyor.
 
 
-FROM alpine:3.15
 
-RUN apk --no-cache add openjdk17-jre-headless bash 
+## Java Docker imajlarınızdaki güvenlik açıklarını bulun ve düzeltin.
 
+* https://snyk.io/product/open-source-security-management/
+* trivy
 
-Java Docker imajlarınızdaki güvenlik açıklarını bulun ve düzeltin.
-
-Docker imajları, güvenlik açıklarını içerebilir.
-
-Güvenlik açıklarını ücretsiz olan Snyk aracıyla  tarayın ve düzeltin
-
-npm install -g snyk  
-snyk auth
-snyk container test myimage --file=Dockerfile
-
-https://snyk.io/product/open-source-security-management/
-
-
-Multistage buildler kullanın
+## Multistage buildler kullanın
 
 Eğer build işlemlerini konteynır içinde yapıyorsanız 2 imajın ayrı olması gerekir.
-Properly handle events to safely terminate a Java application
+
+## Properly handle events to safely terminate a Java application (stability)
 
 pid-1 de çalışacak şekilde kullanmayın.
 
@@ -58,33 +47,106 @@ Lite bir init desteği kullanın. Bu sayede Java prosesine sağlıklı bir şeki
 CMD “dumb-init” “java” “-jar” “application.jar”
 
 https://github.com/Yelp/dumb-init
-Java appleri root yetkisi ile değil standart kullanıcı ile çalıştırın.
-Java uygulamalarını uygunca öldürün
-
 
 Çalışan bir Java uygulamasını ani bir şekilde sonlandırmak önlemek, aktif canlı bağlantıları da durdurur.  Kapatmak için uygulama içinde kapatma mesajları gönderin. 
 
 Runtime.getRuntime().addShutdownHook
 (yourShutdownThread);
 
-.dockerignore kullanın
+## Java appleri root yetkisi ile değil standart kullanıcı ile çalıştırın.
+
+
+## .dockerignore kullanın
 
 build sırasındaki ve öncesinde oluşturulan veya oluşan dosyalar yanlışlıkla imajla beraber gitmez.
 Konteynırda olduğunu anlayan Java kullanın
 
-Eski JVM sürümleri Docker memory and CPU
-ayarlarına uymaz.
+##  Eski JVM sürümleri Docker memory and CPU ayarlarına uymaz.
 Java 10+ veya Java 8 update 191+ üzeri kullanın.
-Automatic Docker konteynır üretme araçlarını kullanırken dikkatli olun
-
-Spring Boot 2.3 Docker image oluşturma ve JIB gibi araçlar otomatik olarak imaj oluşturabilir ama ek güvenlik özelliklerini uygulayamazlar. Bu yüzden, bunların yerine gerekli güvenlik yapılandırmasını içeren Dockerfile kullanın.
 
 
-Kaynak
 
-https://snyk.io/wp-content/uploads/10-best-practices-to-containerize-Java-applications-with-Docker.pdf
+## jib kullanımı
+
+```
+*********
+   <plugin>     
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>3.4.0</version>
+            <configuration>
+              <to>
+                <image>spring-with-root</image>
+              </to>
+            </configuration>
+          </plugin>
+******** 
+
+*********
+   <plugin>     
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>3.4.0</version>
+            <configuration>
+              <to>
+                <image>spring-with-no-root</image>
+              </to>
+              <container>
+                <user>5005:5005</user>
+            </container>
+            </configuration>
+          </plugin>
+******** 
+
+
+mvn compile jib:build
+
+mvn compile jib:dockerBuild
+
+```
+
+## node
+
+```
+# Use the official Node.js image as the base image
+FROM node:14-slim
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Create a new user 'nodeuser' and use /usr/src/app as the home directory
+RUN useradd -m -d /usr/src/app nodeuser
+
+# Set ownership of /usr/src/app to 'nodeuser'
+RUN chown -R nodeuser:nodeuser /usr/src/app
+
+# Switch to 'nodeuser'
+USER nodeuser
+
+# Copy package.json and package-lock.json (if available)
+COPY --chown=nodeuser:nodeuser package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY --chown=nodeuser:nodeuser . .
+
+# Expose port (if necessary)
+EXPOSE 3000
+
+# Command to run the application
+CMD ["npm", "start"]
+
+
+```
+
+#### Kaynaklar
+
 
 https://snyk.io/blog/docker-for-java-developers/
+
+https://snyk.io/blog/best-practices-to-build-java-containers-with-docker/
 
 https://www.tutorialworks.com/docker-java-best-practices/
 
