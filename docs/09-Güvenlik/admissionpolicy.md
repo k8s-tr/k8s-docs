@@ -7,7 +7,7 @@ parent: Güvenlik
 
 ```bash
 
-kubectl create -f https://github.com/kyverno/kyverno/releases/download/v1.10.0/install.yaml
+kubectl create -f https://github.com/kyverno/kyverno/releases/download/v1.10.3/install.yaml
 
 ```
 # Validation
@@ -155,3 +155,29 @@ kubectl delete clusterpolicy sync-secrets
 
 ```
 
+
+## deny unkown repositories
+
+```yaml
+
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: allowed-repo
+spec:
+  validationFailureAction: enforce
+  rules:
+  - name: check-registries
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Registry not allowed"
+      pattern:
+        spec:
+          containers:
+          - image: "docker.io/* | quay.io/*"
+
+
+```

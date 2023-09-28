@@ -212,37 +212,103 @@ mvn compile jib:dockerBuild
 ```
 
 ## node
+```Dockerfile
+# ---- Base Node ----
+FROM node:14-slim AS base
+WORKDIR /app
+COPY package*.json ./
 
-```
-# Use the official Node.js image as the base image
-FROM node:14-slim
+# ---- Dependencies ----
+FROM base AS dependencies
+# Install production dependencies
+RUN npm ci --only=production
 
-# Set the working directory
-WORKDIR /usr/src/app
+# ---- Build ----
+FROM base AS build
+# Install all dependencies and build the project
+COPY . .
+RUN npm ci && npm run build
 
-# Create a new user 'nodeuser' and use /usr/src/app as the home directory
-RUN useradd -m -d /usr/src/app nodeuser
+# ---- Release ----
+FROM node:14-slim AS release
+# Create app directory
+WORKDIR /app
 
-# Set ownership of /usr/src/app to 'nodeuser'
-RUN chown -R nodeuser:nodeuser /usr/src/app
+# Create a non-root user: nodeuser
+RUN addgroup --system nodegroup && adduser --system --group nodegroup
+USER nodegroup
 
-# Switch to 'nodeuser'
-USER nodeuser
+# Copy production dependencies
+COPY --from=dependencies /app/node_modules ./node_modules
+# Copy app sources
+COPY --from=build /app .
 
-# Copy package.json and package-lock.json (if available)
-COPY --chown=nodeuser:nodeuser package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
-COPY --chown=nodeuser:nodeuser . .
-
-# Expose port (if necessary)
+# Expose the application on port 3000
 EXPOSE 3000
 
-# Command to run the application
+# Start the application
 CMD ["npm", "start"]
+
+```
+
+## python
+```Dockerfile
+# ---- Base Python ----
+FROM python:3.8-slim AS base
+WORKDIR /app
+COPY requirements.txt .
+
+# ---- Dependencies ----
+FROM base AS dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# ---- Copy Files/Build ----
+FROM dependencies AS build
+WORKDIR /app
+COPY . /app
+
+# ---- Release ----
+FROM base AS release
+WORKDIR /app
+
+# Create non-root user
+RUN useradd -m myuser
+USER myuser
+
+# Copy python scripts and compiled files
+COPY --from=build /app .
+
+# Command to run the application
+CMD ["python", "app.py"]
+
+```
+
+
+## maven
+```Dockerfile
+# ---- Base Maven ----
+FROM maven:3.8.2-openjdk-11-slim AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# ---- Dependencies ----
+COPY src/ /app/src/
+RUN mvn package
+
+# ---- Release ----
+FROM openjdk:11-jre-slim AS release
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup --system javauser && adduser --system --group javauser
+USER javauser
+
+# Copy application JAR and other dependencies
+COPY --from=build /app/target/my-app.jar .
+
+# Command to run the application
+CMD ["java", "-jar", "my-app.jar"]
 
 
 ```
