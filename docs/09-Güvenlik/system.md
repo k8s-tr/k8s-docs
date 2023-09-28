@@ -197,6 +197,9 @@ https://kubernetes.io/docs/tutorials/security/seccomp/
   - İki teknoloji birlikte kullanılabilir; her biri farklı güvenlik katmanları sağlar.
 
 
+## kubespray hardening
+* https://github.com/kubernetes-sigs/kubespray/blob/master/docs/hardening.md
+
 # diğerleri (atak yüzeyini azaltma)
 
 * işe yaramayan servisleri kaldırma. örn. snapd
@@ -240,3 +243,73 @@ spec:
 
 
 ```
+
+
+## log 2 remote 
+
+* filebeat 
+
+```yaml
+
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/kube-apiserver.log
+    - /var/log/kube-scheduler.log
+    - /var/log/kube-controller-manager.log
+    # Add other control plane log paths as needed
+
+output.elasticsearch:
+  hosts: ["<your-elasticsearch-host>:<your-elasticsearch-port>"]
+
+
+```
+
+```yaml
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: filebeat
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      k8s-app: filebeat
+  template:
+    metadata:
+      labels:
+        k8s-app: filebeat
+    spec:
+      containers:
+      - name: filebeat
+        image: docker.elastic.co/beats/filebeat:<version>
+        args: [
+          "-c", "/etc/filebeat/filebeat.yml",
+          "-e",
+        ]
+        volumeMounts:
+        - name: config
+          mountPath: /etc/filebeat
+          readOnly: true
+        - name: logs
+          mountPath: /var/log
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          defaultMode: 0600
+          name: filebeat-config
+      - name: logs
+        hostPath:
+          path: /var/log
+
+
+```
+
+
+
+* https://grafana.com/oss/loki/
+
+![Alt text](../kaynaklar/screenshot-qonto-dashboard.png)
