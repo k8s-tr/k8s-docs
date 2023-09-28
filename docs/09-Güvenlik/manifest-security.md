@@ -98,3 +98,45 @@ spec:
             image: "*"
 
 ```
+
+
+# Hostpath Security
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      volumes:
+        - name: hostpath-volume
+          hostPath:
+            path: /path/on/host
+            type: DirectoryOrCreate
+      initContainers:
+        - name: init-mkdir-chown
+          image: busybox:1.32
+          command: ['sh', '-c', 'mkdir -p /data/dir && chown 1000:1000 /data/dir']
+          volumeMounts:
+            - name: hostpath-volume
+              mountPath: /data
+      containers:
+        - name: main-container
+          image: your-main-container-image
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+          volumeMounts:
+            - name: hostpath-volume
+              mountPath: /data
+```
