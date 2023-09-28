@@ -17,19 +17,26 @@ kubectl ve kube_config için
 
 ```bash
 
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# aşağıdaki host makinada yapılmalı 
+# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
-id 
-# docker kullanıcısı 
 
-sudo mv kubectl /usr/bin/
+# minikube mount ./:/home/docker/host & 
+
+
+# minikube ssh
+
+sudo cp host/kubectl /usr/bin/kubectl
+
 sudo chmod +x /usr/bin/kubectl
-mkdir .kube
+
+sudo mkdir -p .kube
+
 sudo cp /etc/kubernetes/admin.conf .kube/config
 
 sudo chown docker. .kube/config
 
-kubectl get node
+kubectl get nod
 
 ```
 

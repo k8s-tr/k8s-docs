@@ -27,11 +27,117 @@ Uygulamaların koşacağı imajı bu şekilde üretirsek sadece jre kurmuş oluy
 ## Java Docker imajlarınızdaki güvenlik açıklarını bulun ve düzeltin.
 
 * https://snyk.io/product/open-source-security-management/
-* trivy
+* trivy - https://gitlab.com/haynes/trivy-airgapped
 
+
+```bash
+trivy image --exit-code 1 --severity HIGH,CRITICAL $IMAGE_NAME
+
+```
 ## Multistage buildler kullanın
 
 Eğer build işlemlerini konteynır içinde yapıyorsanız 2 imajın ayrı olması gerekir.
+
+```Dockerfile
+
+# ---- Base Node ----
+FROM node:14-slim AS base
+WORKDIR /app
+COPY package*.json ./
+
+# ---- Dependencies ----
+FROM base AS dependencies
+# Install production dependencies
+RUN npm ci --only=production
+
+# ---- Build ----
+FROM base AS build
+# Install all dependencies and build the project
+COPY . .
+RUN npm ci && npm run build
+
+# ---- Release ----
+FROM node:14-slim AS release
+# Create app directory
+WORKDIR /app
+
+# Create a non-root user: nodeuser
+RUN addgroup --system nodegroup && adduser --system --group nodegroup
+USER nodegroup
+
+# Copy production dependencies
+COPY --from=dependencies /app/node_modules ./node_modules
+# Copy app sources
+COPY --from=build /app .
+
+# Expose the application on port 3000
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "start"]
+
+
+```
+
+```Dockerfile
+
+# ---- Base Python ----
+FROM python:3.8-slim AS base
+WORKDIR /app
+COPY requirements.txt .
+
+# ---- Dependencies ----
+FROM base AS dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# ---- Copy Files/Build ----
+FROM dependencies AS build
+WORKDIR /app
+COPY . /app
+
+# ---- Release ----
+FROM base AS release
+WORKDIR /app
+
+# Create non-root user
+RUN useradd -m myuser
+USER myuser
+
+# Copy python scripts and compiled files
+COPY --from=build /app .
+
+# Command to run the application
+CMD ["python", "app.py"]
+
+```
+
+```Dockerfile
+
+# ---- Base Maven ----
+FROM maven:3.8.2-openjdk-11-slim AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# ---- Dependencies ----
+COPY src/ /app/src/
+RUN mvn package
+
+# ---- Release ----
+FROM openjdk:11-jre-slim AS release
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup --system javauser && adduser --system --group javauser
+USER javauser
+
+# Copy application JAR and other dependencies
+COPY --from=build /app/target/my-app.jar .
+
+# Command to run the application
+CMD ["java", "-jar", "my-app.jar"]
+
+```
 
 ## Properly handle events to safely terminate a Java application (stability)
 
