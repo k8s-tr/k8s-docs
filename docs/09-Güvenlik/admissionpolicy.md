@@ -165,7 +165,7 @@ kind: ClusterPolicy
 metadata:
   name: allowed-repo
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: Enforce
   rules:
   - name: check-registries
     match:
@@ -178,6 +178,33 @@ spec:
         spec:
           containers:
           - image: "docker.io/* | quay.io/*"
+
+
+```
+
+## deny privileged pods
+
+```yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+    - name: prevent-privileged-containers
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Privileged containers are not allowed"
+        pattern:
+          spec:
+            containers:
+              - =(securityContext):
+                  =(privileged): false
 
 
 ```
