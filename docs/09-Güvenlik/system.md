@@ -1,3 +1,9 @@
+---
+layout: default
+title: System Hardening
+nav_order: 8
+parent: Güvenlik
+---
 
 ## auditing
 
@@ -8,7 +14,12 @@ https://www.youtube.com/watch?v=HXtLTxo30SY
 
 ## apparmor
 
-AppArmor (Application Armor) bir Linux güvenlik modülüdür. İşte AppArmor hakkında liste şeklinde temel bilgiler:
+AppArmor (Appli---
+layout: default
+title: RBAC
+nav_order: 1
+parent: Güvenlik
+---cation Armor) bir Linux güvenlik modülüdür. İşte AppArmor hakkında liste şeklinde temel bilgiler:
 
 ### 1. **Nedir?**
    - Linux sistemlerinde uygulamaları güvence altına almak için kullanılır.
