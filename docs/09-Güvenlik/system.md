@@ -128,7 +128,9 @@ RUN usermod -s /usr/sbin/nologin your-user
 
 
 ```
+## seccomp
 
+https://www.geeksforgeeks.org/linux-system-call-in-detail/
 - Linux kernel'inde sistem çağrılarını (system calls) filtrelemek için kullanılır. `seccomp` ve `AppArmor` arasında birkaç fark vardır, ve her biri farklı güvenlik gereksinimlerine hizmet eder.
 `seccomp` bir Linux kernel özelliğidir.
 - Uygulamaların yapabileceği sistem çağrılarını sınırlar ve böylece güvenliği artırır.
