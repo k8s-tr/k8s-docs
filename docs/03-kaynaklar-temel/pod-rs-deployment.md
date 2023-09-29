@@ -17,6 +17,10 @@ kubectl config set-context --current --namespace=myspace
 
 ```
 
+![Alt text](../kaynaklar/pod-rs-deployment.png)
+
+![Alt text](../kaynaklar/rs-interaction.png)
+
 ## Pod 
 
 Pod, birden fazla konteyneri içeren ve bu konteynerlerin aynı fiziksel veya sanal makinede çalışmasını sağlayan bir kavramdır. Bu konteynerler, birbirleriyle iletişim kurabilirler ve aynı kaynakları paylaşabilirler. Pod, birim olarak yönetilir ve Kubernetes, podların sağlığını kontrol ederek, yeniden başlatarak ve gerektiğinde yeniden oluşturarak uygulamanın sürekli çalışmasını sağlar.
@@ -246,5 +250,85 @@ quarkus-demo-deployment-5979886fb7-grf59   1/1     Running   0          17s   ap
 kubectl exec -it quarkus-demo-deployment-5979886fb7-c888m -- curl localhost:8080
 
 ```
+
+## Dönüşüm
+
+### pod 
+```yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+###     
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+###
+```
+
+### replicaset
+
+```yaml
+
+apiVersion: apps/v1   ## 
+kind: ReplicaSet  ## 
+metadata:
+  name: nginx-replicaset
+  labels:
+    app: nginx
+## replicaset    
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+## replicaset        
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+
+## deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+
+
+
+
 
 [Sonraki](service.md)

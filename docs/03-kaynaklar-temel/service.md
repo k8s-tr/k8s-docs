@@ -7,6 +7,54 @@ nav_order: 2
 
 # Service
 
+![Alt text](../kaynaklar/deployment-service.png)
+
+
+* deployment
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  labels:
+    app: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: my-image
+
+```
+
+* service
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+  labels:
+    app: my-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+
+
+```
+
 Kubernetes'de, pod'ların IP adresleri dinamik olarak değişebilir. Bu, uygulama içindeki hizmetlerin (servislerin) pod'ların IP adresleri yerine, adlarına göre erişilebilir olması gerektiği anlamına gelir. Bu sorunu çözmek için Kubernetes "Service" adında bir yapı kullanır.
 
 Service, belirli bir pod veya pod grubunu temsil eder ve bir hizmet için sabit bir IP adresi ve DNS adı sağlar. Bu IP adresi ve DNS adı, pod'ların dinamik IP adresi değişse bile sabit kalır. Bu sayede, Service aracılığıyla uygulama içindeki hizmetlere erişmek mümkün hale gelir.
@@ -62,7 +110,7 @@ metadata:
   name: the-service
 spec:
   selector:
-    app: quarkus-demo
+    app: my-app
   ports:
     - protocol: TCP
       port: 80

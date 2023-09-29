@@ -10,6 +10,8 @@ parent: Diğer Kaynaklar
 Ingress için, L7 (özellikle http protokolü) yeteneği olan service diyebiliriz.
 Ingress özelliği, bir ingress controller(IC) kaynağına ihtiyaç duyar. Kubernetes'e IC'yi başka bir sağlayıcıdan kurmamız gerkeir. En popüler olanı ingress nginx controller'dır. 
 
+![Alt text](../kaynaklar/ingress.png)
+
 ```sh
 kubectl apply -f https://gist.github.com/rockcyj/a298fafad969e5ca8e77c3e66fa815fe/raw/57254e34049c963cf83a4619b0d2fb6d5b21b24f/ingress-nginx-controller-1.yaml
 ```
