@@ -20,6 +20,50 @@ parent: Önemli Kaynaklar
 * Startup proplarının kontrol yaptığı sürede liveness ve readiness propları çalışmaz.
 
 
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-app
+  template:
+    metadata:
+      labels:
+        app: spring-boot-app
+    spec:
+      containers:
+      - name: spring-boot-container
+        image: <your-spring-boot-image>
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /actuator/health/startup
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 10
+```
+
+
 **Probe'lar konfigüre edilebilirdirler:**
 
 - **initialDelaySeconds:** Ne kadar süre sonra health check probe'u test edilmeye başlanacak.
