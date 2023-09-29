@@ -5,14 +5,13 @@ nav_order: 9
 has_children: true
 ---
 
+![Alt text](../kaynaklar/security-map.png)
 
 ## Security Principles
 
 *Defense in Depth
 *Least Privilege
 *Limiting the Attack Surface
-
-
  
 # Steps
 Reduce Attack Surface
