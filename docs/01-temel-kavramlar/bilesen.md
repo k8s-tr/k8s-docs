@@ -65,9 +65,19 @@ Kuberneteste 2 durum vardır. Declarative olarak kubernetese söylenen ve gerçe
 /etc/kubernetes/manifests/kube-controller-manager.yaml
 ```
 
-### scheduler
+### kube-scheduler
 
 Bir pod’un hangi node üzerinde çalışacağına karar verir , etiketlere göre podları nodlara dağıtır, kubelet’i tetikler ve ilgili pod ve içindeki konteyner çalıştırılır. Kısacası yeni bir pod oluşturulması isteğine karşı API server’ı izler. 
+
+#### Dikkate aldığı konular
+* Resource requirements
+* Service requirements
+* Hardware/software policy constraints
+* Node affinity and antiaffinity specifications
+* Pod affinity and antiaffinity specifications
+* Taints and tolerations
+* Data locality
+* Deadlines
 
 ```sh
 /etc/kubernetes/manifests/kube-scheduler.yaml
@@ -79,8 +89,14 @@ Bir pod’un hangi node üzerinde çalışacağına karar verir , etiketlere gö
 
 Her bir kubernetes node’unda çalışan agent’tır. İlk işi bulunduğu node’u API Server’a Node resource olarak kayıt ederek Kubernetes tarafından görülmesini sağlamaktır. Bu işlemden sonra sürekli olarak API server’ı dinleyerek bulunduğu node’a herhangi bir Pod schedule edip edilmediğini kontrol eder. Schedule eden bir Pod varsa bulunduğu node üzerinde Pod’un içerisindeki tanımlanan container'ları çalıştırır. Buna ek olarak sürekli olarak node’da çalışan container'ların ayakta olup olmadığını kontrol ederek erişilebilir olmalarını sağlar.
 
-* Sistem servisi olarak çalışır. 
-* 
+* Downloading pod secrets from the API server
+* Mounting volumes
+* Running the pod's container (through the CRI or rkt)
+* Reporting the status of the node and each pod
+* Running container liveness probes
+
+
+* Sistem servisi olarak çalışır.  
 ```sh
 systemctl cat kubelet
 
