@@ -14,12 +14,7 @@ https://www.youtube.com/watch?v=HXtLTxo30SY
 
 ## apparmor
 
-AppArmor (Appli---
-layout: default
-title: RBAC
-nav_order: 1
-parent: Güvenlik
----cation Armor) bir Linux güvenlik modülüdür. İşte AppArmor hakkında liste şeklinde temel bilgiler:
+AppArmor (Application Armor) bir Linux güvenlik modülüdür. İşte AppArmor hakkında liste şeklinde temel bilgiler:
 
 ### 1. **Nedir?**
    - Linux sistemlerinde uygulamaları güvence altına almak için kullanılır.
@@ -138,7 +133,7 @@ https://www.geeksforgeeks.org/linux-system-call-in-detail/
 - JSON formatında profiller oluşturulur.
 - Her profil, izin verilen veya engellenen sistem çağrılarını belirtir.
 
-  ```json
+```json
   {
     "defaultAction": "SCMP_ACT_ERRNO",
     "archMap": [
@@ -163,12 +158,11 @@ https://www.geeksforgeeks.org/linux-system-call-in-detail/
     ]
   }
 
+```
 Dosyayı tüm Kubernetes düğümlerinde uygun bir yere kopyalayın, örneğin /var/lib/kubelet/seccomp/my-seccomp-profile.json.
 
 ```yaml
-
 ## pod için
-
 apiVersion: v1
 kind: Pod
 metadata:

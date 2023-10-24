@@ -51,3 +51,12 @@ docker build -t my-local-image .
 
 kubectl run mypod --image=my-local-image --image-pull-policy=Never
 ```
+
+## addons
+
+```bash
+minikube addons enable metrics-server
+minikube addons enable dashboard
+
+minikube dashboard --url
+```
