@@ -30,15 +30,29 @@ Kendi ortamımızda test etmek istiyorsak [vagrant](vagrant.md) dosyasındaki va
 
 ---
 
+
+
 * Ansible kontrol makinası WSL ya da bir linux makinası olmak zorundadır. 
 * Sunucular arasındaki erişimler için [buraya](https://kubernetes.io/docs/reference/ports-and-protocols/) uyulmak zorundadır.
 
 Kontrol makinasında pip3'ün kurulu olması gerekir.
 
-* ``requirements.txt``ye göre gerekenleri kurun.
+```bash
+# redhat grubu
+sudo dnf install python311
+sudo alternatives --config python
+sudo alternatives --config python3
 
-```
-sudo pip3 install -r requirements.txt
+# python virtual env
+VENVDIR=kubespray-venv
+KUBESPRAYDIR=${kubespray dizini}/
+python3 -m venv $VENVDIR
+source $VENVDIR/bin/activate
+cd $KUBESPRAYDIR
+
+# ``requirements.txt``ye göre gerekenleri kurun.
+pip install -U -r requirements.txt
+
 ```
 
 * ``inventory/sample`` hazır şablonunu ``inventory/mycluster`` olarak kopyala
@@ -65,9 +79,23 @@ cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
 
 * Ansible ile Kubespray'i çalıştırın ve Kubernetes kümenizi kurun. Burada sudo yetkisine sahip bir kullanıcı gerekmektedir. Eğer sunuculara parola ile erişiyorsanız ``-kK`` size erişim parolası ve sudo parolasını soracaktır.
 
-```
+[Güvenlik için güçlendirme](../09-G%C3%BCvenlik/kubespray-hardening.md)
+
+```bash
+
+# root kullanıcısı ile erişmek için
 ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root cluster.yml
+
+# sudo yetkisi olan bir kullanıcı ile erişmek için
 ansible-playbook -i inventory/mycluster/hosts.yaml -b cluster.yml -u <kullanıcı> -kK
+
+# ek değişkenler ve hardening eklenmiş kurulum
+
+ansible-playbook -v cluster.yml \
+        -i inventory/mycluster/hosts.yaml \
+        -become -u <kullanıcı> -kK \
+        -e "@vars.yaml" \
+        -e "@hardening.yaml"
 ```
 *  Eksik bir şey yoksa yukarıdaki IPS tanımında verilen sunuculara kubernetes kümesi kurulacaktır. 
 

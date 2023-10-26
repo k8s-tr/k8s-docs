@@ -18,6 +18,7 @@ nav_order: 0
 
 ## Kurulum Alternatifleri 
 
+* [Minikube](docs/02-kurulum/minikube.html) - Sadece Geliştirme ve öğrenme ortamı için
 * [Kubespray](docs/02-kurulum/kubespray.html) - Canlıya uygun, ölçeklenebilir, yönetilebilir. 
 * [micro8s](docs/02-kurulum/micro8s.html) - IOT ve Edge için, Canlıya uygun, ölçeklenebilir, yönetilebilir. 
 * [k0s](https://github.com/k0sproject/k0s) - IOT ve Edge için
@@ -25,7 +26,6 @@ nav_order: 0
 * [kind](https://kind.sigs.k8s.io/) - Sadece Geliştirme ve öğrenme ortamı için
 * [Docker Desktop](https://www.docker.com/products/docker-desktop) - Sadece Geliştirme ve öğrenme ortamı için
 * [Rancher Desktop](https://rancherdesktop.io/) - Sadece Geliştirme ve öğrenme ortamı için
-* [Minikube](https://minikube.sigs.k8s.io/docs/) - Sadece Geliştirme ve öğrenme ortamı için
 
 ## Temel Kaynaklar
 

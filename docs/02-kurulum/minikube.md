@@ -6,6 +6,7 @@ nav_order: 5
 ---
 
 # kurulum
+[Resmi Sitesi](https://minikube.sigs.k8s.io/docs/) 
 
 # network policy için
 

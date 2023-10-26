@@ -25,7 +25,7 @@ nav_order: 0
   * Processes
   * File Operations
 * [Veri tabanı temelleri](https://www.youtube.com/watch?v=pHKZw5EyTi4&list=PLh9ECzBB8tJOS7WQKdeUaAa5fmPLYAouD)
-* [ağ kavramları](https://www.youtube.com/playlist?list=PLDUOF2Be-kzn8h0-eI0HSADJsaDDu3IUj)
+* [ağ kavramları](https://www.youtube.com/playlist?list=PL1XUdfGZZ4rQ0UPDx__7W4LmeLab227vb)
 * [Konteynerler](https://www.youtube.com/watch?v=hUnST9FY39I)
 * [Mikroservisler](https://www.youtube.com/watch?v=Jta9jw9kAVc)
 * Devops [1](https://www.youtube.com/watch?v=LI9FEQyopSg), [2](https://www.youtube.com/playlist?list=PLAocyzWJktm5nxI97bQaFiiXtWO8tawCC)
