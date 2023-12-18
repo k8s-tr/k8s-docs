@@ -18,6 +18,7 @@ nav_order: 0
 
 ## Kurulum Alternatifleri 
 
+* [Minikube](docs/02-kurulum/vagrant.html) - Masaüstü ortamında sanal makina kurulumu
 * [Minikube](docs/02-kurulum/minikube.html) - Sadece Geliştirme ve öğrenme ortamı için
 * [Kubespray](docs/02-kurulum/kubespray.html) - Canlıya uygun, ölçeklenebilir, yönetilebilir. 
 * [micro8s](docs/02-kurulum/micro8s.html) - IOT ve Edge için, Canlıya uygun, ölçeklenebilir, yönetilebilir. 
@@ -36,10 +37,10 @@ nav_order: 0
 
 ## Diğer Kaynaklar
 
-* [Volumes](docs/04-kaynaklar-diger/volumes.html)
-* [İşler ve Zamanlı İşler](docs/04-kaynaklar-diger/jobs-cronjobs.html)
 * [DaemonSet](docs/04-kaynaklar-diger/daemonsets.html)
 * [StatefulSet](docs/04-kaynaklar-diger/statefulsets.html)
+* [Volumes](docs/04-kaynaklar-diger/volumes.html)
+* [İşler ve Zamanlı İşler](docs/04-kaynaklar-diger/jobs-cronjobs.html)
 * [Ingress](docs/04-kaynaklar-diger/ingress.html)
 * [Yatay Pod Ölçeklendirme](docs/04-kaynaklar-diger/hpa.html)
 * [Yetkiler](docs/04-kaynaklar-diger/yetkiler.html)

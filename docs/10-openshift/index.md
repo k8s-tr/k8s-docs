@@ -1,13 +1,14 @@
 ---
 layout: default
-title: Openhift
-nav_order: 10
+title: Openshift
+nav_order: 9
 has_children: true
 ---
 
+
 # Openshift Nedir? 
 * PaaS
-* 
+
 # Karşılaştırma
 
 * Kurumsal destek sağlar.
