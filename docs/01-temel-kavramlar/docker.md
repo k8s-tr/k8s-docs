@@ -7,8 +7,8 @@ nav_order: 2
 
 # Konteynerler
 
-* [devops mimarisi](../kaynaklar/docker-mimari-1.png)  
-* [docker işlemesi](../kaynaklar/docker-mimari-2.png)
+* [devops bakış açısı](../kaynaklar/docker-mimari-1.png)  
+* [docker ya da cri işlemesi](../kaynaklar/docker-mimari-2.png)
 
 ## Önemli Kavramlar
 

@@ -5,6 +5,9 @@ parent: Temel Kavramlar
 nav_order: 3
 ---
 
+# Küme
+![Cluster](../kaynaklar/nodes.png)
+
 # Bileşenler
 
 https://kubernetes.io/docs/concepts/overview/components/
@@ -14,7 +17,7 @@ Kontrol düzlemi, veri düzlemi ve yönetim düzlemi, bilişim kaynaklarındaki 
 
 ## Kontrol Düzlemi Bileşenleri
 
-![](../kaynaklar/cluste.png)
+![](../kaynaklar/cluster.png)
 
 ### kube-apiserver
 
@@ -48,7 +51,7 @@ Kubernetes üzerinde gerçekleştirilen bütün konfigürasyon ve durumların tu
 * Eski verileri silmek, sıkıştırma (compact) işlemiyle yapılır yoksa verilerin tüm sürümleri hep kalır.
 
 
-#### Dikkat edilmedi Gerekenler
+#### Dikkat edilmesi Gerekenler
 
 
 * Etcd tek sayı üyelerden oluşan bir küme olarak çalıştırılır.
@@ -121,7 +124,6 @@ Service ve Endpoint objelerinin erişebilirliğini sağlamak için node üzerind
 https://www.inovex.de/de/blog/containers-docker-containerd-nabla-kata-firecracker/
 https://thenewstack.io/a-security-comparison-of-docker-cri-o-and-containerd/
 
-
 ### CNI 
     https://docs.projectcalico.org/reference/architecture/overview
 
@@ -145,7 +147,6 @@ kube-sytem nste deployment olarak kurulur.
 * https://coredns.io/  
 
 * https://kubernetes.io/docs/tasks/administer-cluster/coredns/
- 
 
 # web ui
 * https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
@@ -159,8 +160,8 @@ kube-sytem nste deployment olarak kurulur.
 * https://grafana.com/grafana/dashboards/6417-kubernetes-cluster-prometheus/
 * https://github.com/kubernetes-monitoring/kubernetes-mixin
 
-
 # Küme Düzeyinde Loglama 
 * https://kubernetes.io/docs/concepts/cluster-administration/logging/
     
-
+# Openshift Ek Özellikleri
+* https://docs.openshift.com/container-platform/4.14/architecture/architecture.html
