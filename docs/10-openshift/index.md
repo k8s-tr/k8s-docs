@@ -6,7 +6,6 @@ has_children: true
 nav_exclude: true
 ---
 
-
 # Openshift Nedir? 
 * PaaS
 
