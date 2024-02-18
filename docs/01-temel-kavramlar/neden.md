@@ -5,7 +5,29 @@ parent: Temel Kavramlar
 nav_order: 1
 ---
 
-# Neden Konteynerlere ihtiyaç duyarız?
+## Konteyner Nedir?
+
+![vm-containers karşılaştırması](../kaynaklar/containers-vs-virtual-machines.jpg)
+
+* Daha küçük
+* Oluşturması daha kısa
+* Kurması daha kısa
+* Her yerde aynı ayar
+* Hızla çoğaltılabilir
+* Bağımsız 
+  * ayarlanabilir
+  * izlenebilir
+
+## Konteyner Tarihi
+
+* Chroot: Unix in 1979.
+* FreeBSD Jails: 2000
+* Linux Containers (LXC): 2008
+* Docker: 2013
+* Kubernetes: 2014
+* Openshift: 2011, 2015
+
+## Neden Konteynerlere ihtiyaç duyarız?
 
 * **Çevik uygulama oluşturma ve dağıtma:** Uygulama sanal makinesi imaj kullanımına kıyasla kolay ve verimli uygulama imajı oluşturma kolaylığı.
 * **Sürekli geliştirme, entegrasyon ve dağıtım:** Güvenilir ve sık sık konteyner görüntü oluşturma ve dağıtımı sağlarken, hızlı ve kolay geri almaları da destekler (imaj değişmezliği nedeniyle).
@@ -17,9 +39,7 @@ nav_order: 1
 * **Kaynak yalıtımı:** Öngörülebilir uygulama performansı.
 * **Kaynak kullanımı:** Yüksek verimlilik ve yoğunluk.
 
-![vm-containers karşılaştırması](../kaynaklar/containers-vs-virtual-machines.jpg)
-
-# Neden Kubernetes Kullanırız?
+## Neden Kubernetes Kullanırız?
 
 * **Servis keşfi ve yük dengeleme:**
   * Bir konteyneri DNS adını veya kendi IP adreslerini kullanarak ağda sunabilir. 
@@ -45,35 +65,35 @@ nav_order: 1
 ### Bize Sağladıkları
  
 * Sağladıkları
-    - Service Discovery
-    - Resillience (Cluster and resource level)
-    - Load balancing
-    - Health Checks
-    - cluster Authorization
-    - Resource Management
-    - Autoscaling (horizontal & vertical)
-    - Observability (Cluster and resurce level) (prometheus, grafana)
+  * Service Discovery
+  * Resillience (Cluster and resource level)
+  * Load balancing
+  * Health Checks
+  * cluster Authorization
+  * Resource Management
+  * Autoscaling (horizontal & vertical)
+  * Observability (Cluster and resurce level) (prometheus, grafana)
 * Service mesh (istio, linkerd)
-  - Trafik Management
-    - Request Routing
-    - Traffic Shifting
-    - Mirroring
-    - ingress gateway
-    - egress gateway
-  - Security
-    - mTLS, Certicficate Management
-    - Authentication
-    - Peer Authentication
-    - Request Authentication
-  - Service Resilliency
-    - Timeouts
-    - Retries
-    - Circuit breaker
-    - Error İnjection (Ağ sağlamlığı)
-  - Observability (service level)
-    -  Metrics
-    -  Logs and tracing
- -  Stateful Applications
-    -  persistent storage
-    -  statefulsets
- -  Logging
+  *Trafik Management
+    *Request Routing
+    *Traffic Shifting
+    *Mirroring
+    *ingress gateway
+    *egress gateway
+  * Security
+    * mTLS, Certicficate Management
+    * Authentication
+    * Peer Authentication
+    * Request Authentication
+  * Service Resilliency
+    * Timeouts
+    * Retries
+    * Circuit breaker
+    * Error İnjection (Ağ sağlamlığı)
+  * Observability (service level)
+    * Metrics
+    * Logs and tracing
+  * Stateful Applications
+    * persistent storage
+    * statefulsets
+ * Logging

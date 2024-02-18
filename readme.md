@@ -1,5 +1,5 @@
 # Kubernetes Başlangıç Eğitimi
 
-https://edib.github.io/k8s-egitim
+https://github.com/k8s-tr/k8s-docs
 
 ## [Katkı Sağlayın](contribute.md)
