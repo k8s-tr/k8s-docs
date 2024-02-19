@@ -7,6 +7,8 @@ nav_order: 4
 
 # Secrets (giz)
 
+* https://12factor.net
+
 Kubernetes'de, özel bilgilerin, şifrelerin, kimlik doğrulama verilerinin ve diğer hassas verilerin depolanması için Secret adında bir yapı kullanılır. Secret, ConfigMap gibi anahtar-değer çiftleri kullanarak özel bilgileri depolar, ancak Secret verileri şifrelenir.
 
 Secret'lar, YAML dosyaları aracılığıyla yapılandırılır ve uygulama içindeki konteynerlerin gizli bilgilere erişebilmesi için kullanılır. Secret'lar, Pod veya Deployment gibi yapılar tarafından referans edilebilir. Secret'lar, uygulama içinde kullanılan kimlik doğrulama verileri veya özel bilgileri gibi hassas verileri içerir.
