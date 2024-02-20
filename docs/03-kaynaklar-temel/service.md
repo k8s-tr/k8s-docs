@@ -129,3 +129,8 @@ watch kubectl get services
 NAME    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 myapp   LoadBalancer   172.30.103.41   <pending>     8080:31974/TCP   4s
 ```
+
+## Label Yetenekleri
+
+https://redhat-scholars.github.io/kubernetes-tutorial/kubernetes-tutorial/service-magic.html
+
