@@ -10,7 +10,7 @@ nav_order: 4
 ## Pod-Node Bağlamı
 ![Cluster](../kaynaklar/nodes.png)
 
-# Bileşen/Ddüzlem Bağlamı
+# Bileşen/Düzlem Bağlamı
 
 
 Kontrol düzlemi, veri düzlemi ve yönetim düzlemi, bilişim kaynaklarındaki iletişim mimarisinin üç temel bileşenidir. **Kontrol düzlemi ve yönetim düzlemi**, tüm ağın taşımak için var olduğu trafiği taşıyan **veri düzlemine** hizmet eder. Yönetimsel trafik taşıyan yönetim düzlemi, kontrol düzleminin bir alt kümesi olarak kabul edilir. Veri düzlemi asıl vereceğimiz hizmetin trafiğinin aktığı düzlemdir. 
