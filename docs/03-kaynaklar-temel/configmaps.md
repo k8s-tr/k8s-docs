@@ -192,7 +192,7 @@ metadata:
 spec:
   containers:
     - name: demo
-      image: game.example/demo-game
+      image: quay.io/rhdevelopers/myboot:v2
       env:
         # Bir ortam değişkeni tanımla
         - name: PLAYER_INITIAL_LIVES # burada isimlendirme büyük harf diğerinden farklı

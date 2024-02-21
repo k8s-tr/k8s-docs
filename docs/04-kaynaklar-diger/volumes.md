@@ -138,3 +138,41 @@ prometheus:
 ```yaml
 helm install loki-stack grafana/loki-stack --values values.yaml -n monitoring --create-namespace
 ```
+
+### default storage class olan yerlerde pvc kullanımı
+
+```yaml
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: myboot-volumeclaim
+spec:
+  storageClassName: pv-demo
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+
+--- 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myboot-demo
+spec:
+  containers:
+  - name: myboot-demo
+    image: quay.io/rhdevelopers/myboot:v4
+
+    volumeMounts:
+    - mountPath: /tmp/demo
+      name: demo-volume
+
+  volumes:
+  - name: demo-volume
+    persistentVolumeClaim:
+      claimName: myboot-volumeclaim
+
+```
