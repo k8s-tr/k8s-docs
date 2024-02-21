@@ -38,8 +38,15 @@ $ cd autoscaler/vertical-pod-autoscaler
 
 # https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#notice-on-crd-update-100
 
+
 ```
 
 ### örnek
 
-https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+* https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+* https://docs.aws.amazon.com/eks/latest/userguide/vertical-pod-autoscaler.html
+
+### Diğer
+
+* https://blog.kubecost.com/blog/requests-and-limits/
+* https://www.kubecost.com/kubernetes-autoscaling/kubernetes-hpa/
