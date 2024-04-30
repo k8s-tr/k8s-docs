@@ -77,6 +77,26 @@ cat inventory/mycluster/group_vars/all/all.yml
 cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
 ```
 
+### ek ayarlar
+* hostnameleri değiştirmek istemiyorsak
+
+```
+# inventory/mycluster/group_vars/all/all.yml dosyasının içine aşağıdakini ekliyoruz.
+
+override_system_hostname: false
+```
+
+* calico subnetlerini değiştirmek istiyorsak
+
+```
+# mycluster/group_vars/k8s_cluster/k8s-cluster.yml
+# bu değerleri uygun şekilde değiştiriyoruz. 
+ 76 kube_service_addresses: 10.233.0.0/18
+
+ 81 kube_pods_subnet: 10.233.64.0/18
+
+```
+
 * Ansible ile Kubespray'i çalıştırın ve Kubernetes kümenizi kurun. Burada sudo yetkisine sahip bir kullanıcı gerekmektedir. Eğer sunuculara parola ile erişiyorsanız ``-kK`` size erişim parolası ve sudo parolasını soracaktır.
 
 [Güvenlik için güçlendirme](../09-G%C3%BCvenlik/kubespray-hardening.md)
