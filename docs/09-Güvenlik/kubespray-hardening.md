@@ -5,10 +5,11 @@ nav_order: 9
 parent: Güvenlik
 ---
 
-## Kubespray Hardening
+## Kubernetes Hardening
 
 * CIS kurallarına göre hardening parametreleri 
-https://github.com/kubernetes-sigs/kubespray/blob/master/docs/hardening.md
+
+https://github.com/kubernetes-sigs/kubespray/blob/master/docs/operations/hardening.md
 
 Bir deployment veya pod oluşturulmaya çalışılırsa aşağıdaki hatayı verecektir
 

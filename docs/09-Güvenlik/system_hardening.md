@@ -205,7 +205,11 @@ https://kubernetes.io/docs/tutorials/security/seccomp/
 
 
 ## kubespray hardening
-* https://github.com/kubernetes-sigs/kubespray/blob/master/docs/hardening.md
+### Admission Controllers
+
+* https://sysdig.com/blog/kubernetes-admission-controllers/
+* https://github.com/kubernetes-sigs/kubespray/blob/master/docs/operations/hardening.md
+
 
 # diğerleri (atak yüzeyini azaltma)
 
