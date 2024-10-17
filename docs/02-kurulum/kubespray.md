@@ -89,11 +89,18 @@ override_system_hostname: false
 * calico subnetlerini değiştirmek istiyorsak
 
 ```
-# mycluster/group_vars/k8s_cluster/k8s-cluster.yml
+# inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
 # bu değerleri uygun şekilde değiştiriyoruz. 
  76 kube_service_addresses: 10.233.0.0/18
 
  81 kube_pods_subnet: 10.233.64.0/18
+
+# bunları ayarlayabilirsiniz. 
+
+inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
+auto_renew_certificates: true
+auto_renew_certificates_systemd_calendar: "Sat *-*-1,2,3,4,5,6,7 03:{{ groups['kube_control_plane'].index(inventory_hostname) }}0:00"
+
 
 ```
 
