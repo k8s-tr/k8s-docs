@@ -134,6 +134,17 @@ CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inv
 
 ansible-playbook -i inventory/mycluster/hosts.yaml -b cluster.yml -u <kullanıcı> -kK --limit=kube_control_plane
 ```
+# autorenew seçilmemişse sertifika yenileme
+``` 
+# tüm master nodelarda aşağıdaki komut çalıştırılır
+ 
+# tüm controller nodelarda bu çalıştırılır.
+sudo /usr/local/bin/k8s-certs-renew.sh
+ 
+# tüm workerlarda kubelet restart edilir
+ 
+sudo systemctl restart kubelet
+```
 ## [Dashboard ve yeni eklenti kurma](dashboard.md)
 
 * Kaynaklar
