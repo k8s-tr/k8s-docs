@@ -38,6 +38,7 @@ Kendi ortamımızda test etmek istiyorsak [vagrant](vagrant.md) dosyasındaki va
 Kontrol makinasında pip3'ün kurulu olması gerekir.
 
 ```bash
+
 # redhat grubu
 sudo dnf install python311
 sudo alternatives --config python
@@ -58,13 +59,16 @@ pip install -U -r requirements.txt
 * ``inventory/sample`` hazır şablonunu ``inventory/mycluster`` olarak kopyala
 
 ```
+
 cp -rfp inventory/sample inventory/mycluster
+
 ```
 
 * Kubernetes kuracağınız sunucuların listesini Ansible'a veriyoruz.
 * Bu komut ip adreslerini ilk 2.si master ve etcd olacak şekilde nodelar olarak `inventory/mycluster/hosts.yaml` içerisine yazar. 
 
 ```
+
 declare -a IPS=(<server1_ip> <server2_ip> <server3_ip>)
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
@@ -75,6 +79,7 @@ CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inv
 ```
 cat inventory/mycluster/group_vars/all/all.yml
 cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
+
 ```
 
 ### ek ayarlar
@@ -128,14 +133,18 @@ ansible-playbook -v cluster.yml \
 
 ## Yeni nod ekleme
 
-* worker node eklemek için. diğer tür nodlar için farklı süreçler vardır. 
+* worker node eklemek için. diğer tür nodlar için farklı süreçler vardır.
+  
 ```
 declare -a IPS=(<server1_ip> <server2_ip> <server3_ip> <yeni_nod_ip>)
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
 ansible-playbook -i inventory/mycluster/hosts.yaml -b scale.yml -u <kullanıcı> -kK --limit=<host_yml_içindeki_node_name>
+
 ```
+
 # autorenew seçilmemişse sertifika yenileme
+
 ``` 
 # tüm master nodelarda aşağıdaki komut çalıştırılır
  
