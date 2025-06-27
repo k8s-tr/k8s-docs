@@ -145,7 +145,9 @@ ansible-playbook -i inventory/mycluster/hosts.yaml -b scale.yml -u <kullanıcı>
 
 # autorenew seçilmemişse sertifika yenileme
 
-``` 
+```
+sudo /usr/local/bin/kubeadm certs check-expiration
+
 # tüm master nodelarda aşağıdaki komut çalıştırılır
  
 # tüm controller nodelarda bu çalıştırılır.
