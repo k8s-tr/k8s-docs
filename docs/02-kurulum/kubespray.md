@@ -37,6 +37,8 @@ Kendi ortamımızda test etmek istiyorsak [vagrant](vagrant.md) dosyasındaki va
 
 Kontrol makinasında pip3'ün kurulu olması gerekir.
 
+### Doğrudan sistem üzerine ansible kurulumu
+
 ```bash
 
 # redhat grubu
@@ -55,6 +57,19 @@ cd $KUBESPRAYDIR
 pip install -U -r requirements.txt
 
 ```
+
+### kubespray hazır docker imajı kullanmak
+
+```
+# hangi sürüm kuracaksanız ona göre imaj seçilmesi gerekir. 
+docker run --rm -it --mount type=bind,source="$(pwd)"/inventory/sample,dst=/inventory \
+  quay.io/kubespray/kubespray:v2.29.0 bash
+# Inside the container you may now run the kubespray playbooks:
+
+ansible-playbook -i /inventory/inventory.ini cluster.yml [-b -kK -u $sudo_yetkili_user]
+
+```
+
 
 * ``inventory/sample`` hazır şablonunu ``inventory/mycluster`` olarak kopyala
 
