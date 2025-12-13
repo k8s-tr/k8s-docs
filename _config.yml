@@ -77,9 +77,9 @@ last_edit_time_format: "%b %e %Y at %I:%M %p"
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: "GitHub'ta düzenle."
-gh_edit_repository: "https://github.com/k8s-tr/k8s-docs/" 
-gh_edit_branch: "master" 
-gh_edit_view_mode: "tree" 
+gh_edit_repository: "https://github.com/k8s-tr/k8s-docs/"
+gh_edit_branch: "gh-pages"
+gh_edit_view_mode: "blob"
 
 include:
     - docs
