@@ -165,6 +165,62 @@ metadata:
 ```
 
 
+## dex entegrasyonu ve ldap login
+
+### dex config
+```yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  dex.config: |
+    connectors:
+    - type: ldap
+      name: LDAP
+      id: ldap
+      config:
+        host: "mydc.local"
+        insecureNoSSL: true
+        insecureSkipVerify: true
+        bindDN: "$dex.ldap.bindDN"
+        bindPW: "$dex.ldap.bindPW"
+        usernamePrompt: Username
+        userSearch:
+          baseDN: "OU=_ORGANIZATION,DC=mydc,DC=local"
+          filter: ""
+          username: sAMAccountName
+          idAttr: sAMAccountName
+          emailAttr: mail
+          nameAttr: givenName
+        groupSearch:
+          baseDN: "OU=_ORGANIZATION,DC=mydc,DC=local"
+          filter: "(objectclass=group)"
+          userAttr: DN
+          groupAttr: member
+          nameAttr: cn
+
+```
+
+### rbac config
+
+```yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:''
+  policy.csv: |
+   g, birgrup, role:birrole
+
+```
+
+
 Kaynaklar
 * [ Just me and Opensource - [ Kube 85.1 ] Argo CD continuous deployment to Kubernetes - Part 1 ](https://www.youtube.com/watch?v=HX24uMKmJRw&list=PL34sAs7_26wMW4bWKnMIfEd87aPuw75by)
 

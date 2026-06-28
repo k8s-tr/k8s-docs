@@ -52,7 +52,6 @@ cd kubespray
 ```bash
 # Kuracağınız Kubernetes sürümüne göre kubespray imaj sürümünü seçin.
 # Mevcut sürümler: https://quay.io/repository/kubespray/kubespray?tab=tags
-export KUBESPRAY_VERSION=v2.29.0
 
 export KUBESPRAY_VERSION=v2.31.0
 
