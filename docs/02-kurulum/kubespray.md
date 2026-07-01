@@ -7,6 +7,8 @@ nav_order: 1
 
 # Kubespray
 
+
+
 [Resmi Sitesi](https://github.com/kubernetes-sigs/kubespray)
 
 Kubespray, Kubernetes kurulum ve bakımını otomatikleştiren, Ansible üzerine geliştirilmiş resmi bir araçtır.

@@ -1,0 +1,87 @@
+---
+layout: default
+title: Gateway API
+nav_order: 2
+parent: İleri Düzey Konular
+---
+
+
+# Gateway API
+
+```
+# Gateway api kurulumu
+kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.6.0/standard-install.yaml
+
+
+kubectl get crd | grep gateway.networking.k8s.io
+  backendtlspolicies.gateway.networking.k8s.io            2026-07-01T07:41:51Z
+  gatewayclasses.gateway.networking.k8s.io                2026-07-01T07:41:51Z
+  gateways.gateway.networking.k8s.io                      2026-07-01T07:41:51Z
+  grpcroutes.gateway.networking.k8s.io                    2026-07-01T07:41:51Z
+  httproutes.gateway.networking.k8s.io                    2026-07-01T07:41:51Z
+  listenersets.gateway.networking.k8s.io                  2026-07-01T07:41:51Z
+  referencegrants.gateway.networking.k8s.io               2026-07-01T07:41:51Z
+  tcproutes.gateway.networking.k8s.io                     2026-07-01T07:41:51Z
+  tlsroutes.gateway.networking.k8s.io                     2026-07-01T07:41:51Z
+  udproutes.gateway.networking.k8s.io                     2026-07-01T07:41:51Z
+
+
+# nginx-gateway-fabric kur 
+helm upgrade ngf oci://ghcr.io/nginx/charts/nginx-gateway-fabric   -n nginx-gateway   --reuse-values   --set nginx.service.type=NodePort --set nginx.service.externalTrafficPolicy=Cluster
+
+
+kubectl create namespace argocd
+kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+```
+
+###  gateway örneği 
+
+
+```
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: my-nodeport-gateway
+  namespace: nginx-gateway
+spec:
+  gatewayClassName: nginx
+  listeners:
+  - name: http
+    protocol: HTTP
+    port: 80
+    allowedRoutes:
+      namespaces:
+        from: All
+
+```
+
+
+### httproute örneği
+
+```
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: my-app-route
+  namespace: nginx-gateway
+spec:
+  parentRefs:
+  - name: my-nodeport-gateway # Yukarıda tanımlanan Gateway'e bağladık
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: coffee
+      port: 80
+
+```
+
+* diğer : https://gateway-api.sigs.k8s.io/guides/getting-started/migrating-from-ingress/
+
+
+# Kaynaklar
+https://gateway-api.sigs.k8s.io/guides/getting-started/migrating-from-ingress/
